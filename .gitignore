@@ -1,0 +1,24 @@
+# Credenciales y configuración privada
+.env
+.env.*
+!.env.example
+secrets/
+credentials/
+*.pem
+*.key
+
+# Datos privados y archivos locales de trabajo
+datos-privados/
+exports-privados/
+backups/
+*.log
+
+# Entornos y archivos generados
+node_modules/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+dist/
+coverage/
+.DS_Store
