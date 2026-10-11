@@ -6,6 +6,8 @@ Repositorio privado de documentación y desarrollo del cotizador. Estado al **10
 
 Leer la [base del proyecto](docs/requisitos/base-proyecto.md): requisitos, fuentes, arquitectura propuesta, 15 workflows, dependencias, decisiones pendientes y pruebas de aceptación. Versión documental actual: **0.3**.
 
+Consultar el [índice de fuentes en Drive](docs/fuentes/README.md) y la [guía técnica de integración v2](docs/arquitectura/guia-integracion-v2.md). Los originales permanecen en Drive; la copia técnica del repositorio se actualiza manualmente.
+
 ## Alcance
 
 - **Fase 1:** solicitud sin marcación, catálogo y disponibilidad, cálculo, cotización, envío, pago confirmado, pedido al proveedor, facturación con aprobaciones fiscales y trazabilidad.
@@ -34,6 +36,7 @@ Crear ramas para cambios de desarrollo y presentar pull requests con problema, s
 
 | Ruta | Uso |
 |---|---|
+| `docs/fuentes/` | Índice de enlaces a los originales de Drive |
 | `docs/requisitos/` | Base y requisitos del proyecto; ya iniciada |
 | `docs/arquitectura/`, `docs/decisiones/`, `docs/operacion/` | Diseños, decisiones y procedimientos; crear al documentarlos |
 | `workflows/`, `motor/`, `schemas/`, `tests/` | Flujos n8n, lógica, contratos y pruebas; crear al implementarlos |
