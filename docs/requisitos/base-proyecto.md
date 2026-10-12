@@ -1,7 +1,7 @@
 # Cotizador automático · Tu Merch × Luup Lab
 
-Versión 0.3 · Revisión documental: 9 de octubre de 2026. Actualización de planificación, equipo y repositorio: 10 de octubre de 2026, hora de Bogotá.
-Estado: boceto para revisión. No constituye aprobación de arquitectura, reglas pendientes ni cronograma. Confidencial, conforme al NDA mencionado en las fuentes.
+Versión 0.4 · Revisión documental: 9 de octubre de 2026. Actualización de planificación, equipo y repositorio: 10 de octubre de 2026. Incorporación del alcance contractual aprobado y del cronograma recalculado: 12 de octubre de 2026, hora de Bogotá.
+Estado: boceto para revisión, con el alcance contractual ya aprobado. No constituye aprobación de arquitectura, de las reglas pendientes ni de la fecha de salida. Confidencial, conforme al NDA mencionado en las fuentes.
 
 ## 1. Resultado de la revisión
 
@@ -18,10 +18,14 @@ Hay información suficiente para diseñar el recorrido y los contratos de datos.
 | [Anexo técnico v1, PDF](https://drive.google.com/file/d/1-6cfxunLTnp7fjsAuA4CCJS8PVBlQFps/view?usp=drivesdk) | 9 páginas. Estado de sistemas, límites reportados y referencias visuales. Está también en el paquete. |
 | [Guía técnica de integración v2](https://drive.google.com/file/d/1bZyWxo16AP3AjY5pSreEhEDZ3VwEQrZK/view?usp=drivesdk) | 08/10. Referencia vigente de integración y convivencia. Reemplaza expresamente la v1. |
 | [Guía técnica v1, marcada obsoleta](https://drive.google.com/file/d/1G_RL0Wcdn2cJXYum0vIxeJ6yy2AgZlKQ/view?usp=drivesdk) | Revisada como antecedente. No implementar instrucciones sustituidas sobre accesos o contactos de prueba. |
+| **[Roadmap aprobado, 01/10/2026](roadmap-aprobado-20261001.md)** · original [HTML](20261001_Roadmap_Cotizador_TuMerch.html) | **El artefacto que Tu Merch aprobó el 11/10 y la autoridad en materia contractual.** Cuatro etapas K/D1/D2/D3 con 38 entregables y 18 criterios, 19 casos de aceptación, 15 accesos e insumos `dep-01`–`dep-15`, 10 decisiones `dec-01`–`dec-10` y 6 exclusiones. El markdown es transcripción fiel del HTML y se regenera cuando aquel cambie. |
+| [Propuesta de Luup Lab, 01/10/2026](propuesta-aprobada-20261001.md) | Documento de respaldo del roadmap: honorarios, forma de pago, equipo, soporte, riesgos y costos recurrentes de operación. Coincide con el roadmap en alcance y fechas. |
 | [Mercately](https://docs.google.com/document/d/15nLjnlhCWdoosKGQDzWhBOP0VtsRIpg2I0iEwQC_wqM/edit?usp=drivesdk) y [Shopify](https://docs.google.com/document/d/1dwfN46XhRs-CB3yA-zV-SaZC4WchjHY1_tqwWqFgUFw/edit?usp=drivesdk) | Documentos de entrega de accesos por enlaces de un solo uso. Leídos; sus enlaces y contraseñas no se reproducen en esta base. |
 | 01_portada.jpg; 02_ficha_producto.jpg; 03_cuerpo_cotizacion.jpg; 04_social.jpg; 05_terminos.jpg; 06_cuerpo_ejemplo2.jpg | Seis imágenes inspeccionadas: portada, ficha, tabla, página social, condiciones y segundo cuerpo. Referencias de presentación, no tablas comerciales vigentes. |
 
-Las reglas de negocio provienen del funcional. Las precisiones técnicas del anexo resuelven algunos de sus pendientes; la guía v2 actualiza el entorno. Las contradicciones restantes deben resolverse explícitamente, sin seleccionar una interpretación por conveniencia.
+Las reglas de negocio provienen del funcional. Las precisiones técnicas del anexo resuelven algunos de sus pendientes; la guía v2 actualiza el entorno; la propuesta aprobada fija el alcance contratado y las fechas. Las contradicciones restantes deben resolverse explícitamente, sin seleccionar una interpretación por conveniencia.
+
+Aviso de nomenclatura: en este repositorio **«v2» designa la guía técnica de integración del cliente** del 08/10. La propuesta de Luup Lab se cita siempre por su fecha, 01/10/2026, nunca como «v2», para no confundir dos documentos distintos.
 
 ### Recursos citados que no se pudieron revisar
 
@@ -41,6 +45,24 @@ Tampoco aparecen la plantilla Canva editable, las cinco cotizaciones recientes, 
 | Forma de trabajo | Asíncrona. Registrar avances, bloqueos, decisiones y evidencias para que el siguiente integrante pueda continuar. |
 
 Estas aclaraciones actualizan la planificación y los roles de esta base; no modifican los documentos fuente de Tu Merch ni aprueban cambios de alcance.
+
+### Alcance contractual aprobado · propuesta del 01/10/2026
+
+Tu Merch aprobó el **roadmap del 01/10/2026** el 11/10, y el inicio quedó el 15/10 con el pago inicial. Ese roadmap es la fuente de la verdad del alcance: está transcrito en [`roadmap-aprobado-20261001.md`](roadmap-aprobado-20261001.md), con el HTML original al lado. Esto cierra la parte de **alcance** de P0-02; la parte de **cronograma** se trata en [ADR-001](../decisiones/ADR-001-cronograma-y-fecha-de-salida.md) y sigue pendiente de confirmación de Brayan.
+
+Sus identificadores entran al proyecto tal como están: `dep-01`–`dep-15` para accesos e insumos, `dec-01`–`dec-10` para las decisiones del cliente, y `A01`–`A12` más `M-A01`–`M-A07` para los casos. Conviven con los `P0`/`P1`/`P2` de §8, que agrupan varios de ellos: cuando se citen juntos, el identificador del roadmap manda porque es el que ve el cliente.
+
+| Qué quedó contratado | Detalle |
+|---|---|
+| Fase 1, hitos 0 a 5 | $5.000.000 COP sin IVA. 50 % al inicio, 50 % contra el acta de aceptación |
+| Fase 2 y módulos, hito 6 | $5.000.000 COP sin IVA, a precio cerrado. **No contratada aún:** se activa por escrito, después de ver el cierre digital en operación y con las tablas M01–M09 entregadas |
+| Opcional no contratado | Doble verificación de inventario contra las API de los dos proveedores que la exponen: $700.000 COP, 3 días |
+| Soporte | 30 días incluidos por fase. Después, retainer opcional de $5.000.000 COP mensuales, cancelable mes a mes |
+| Costos recurrentes de operación | A cargo de Tu Merch: infraestructura, consumo de IA de extracción, cuota de API del CRM, comisión de pasarela y licencias |
+
+Fuera de alcance por escrito, y por tanto sujeto a cotización aparte, según la sección de exclusiones del roadmap aprobado: entrada por correo o web, verificación de inventario en las API de proveedores, selección automática del proveedor, el cotizador web o Qstomizer como canal de venta, previsualización del logo sobre el producto, y la Fase 3 de integración de proveedores. Esto confirma la frontera que el §2 de esta base pedía aclarar con operación, y acota el universo de 890 proveedores del funcional como ampliación distinta.
+
+La propuesta aprobada exige también de Tu Merch: accesos en las fechas comprometidas, un responsable con fecha por cada decisión, revisión de los pull requests que toquen su infraestructura en 24 horas hábiles o autorización expresa para desplegar con revisión posterior, y participación de la persona comercial y de contabilidad en las pruebas de aceptación. Los tiempos de respuesta comprometidos son cuatro horas hábiles para bloqueos durante construcción y piloto, y cuatro horas hábiles para incidentes que detengan cotización o cobro durante el soporte.
 
 ## 2. Alcance que debemos preservar
 
@@ -167,7 +189,7 @@ Separar estados comercial, cotización, pago, orden y factura. Una oportunidad p
 | Prioridad / ID | Necesidad | Responsable de la fuente o decisión | Momento |
 |---|---|---|---|
 | P1-06 | Excel original de descuentos, fórmulas e instrucciones; cinco cotizaciones recientes y plantilla/base limpia. | Brayan/comercial | Calculadora pendiente de Brayan, confirmada por David el 10/10. No bloquea el diseño actual; requerida para implementar y validar descuentos reales. Casos y plantilla antes de aprobar cálculo/formato. |
-| P0-02 | Alcance contractual efectivamente aprobado, cronograma por hitos y significado de D3. | David + Tu Merch; Miguel revisa lo técnico | Inicio confirmado por David: 15/10/2026. Fecha orientativa: 15/11/2026, pendiente de confirmar; reemplaza el 29/10 como referencia de planificación. |
+| P0-02 | Alcance contractual efectivamente aprobado, cronograma por hitos y significado de D3. | David + Tu Merch; Miguel revisa lo técnico | **Alcance: cerrado.** Propuesta aprobada el 11/10, incorporada en §1 y en `docs/requisitos/propuesta-aprobada-20261001.md`. **Cronograma: abierto.** Inicio 15/10 confirmado; el recálculo y la propuesta de fechas están en ADR-001, pendientes de confirmación escrita de Brayan. D3 es el bloque de marcación, costeo y métricas del mes 2, según la propuesta aprobada. |
 | P0-03 | Acceso reutilizable al motor/extractor/esquema existentes y decisión de arquitectura. | Luup Lab propone y desarrolla; Miguel revisa por Tu Merch | Hito 0; acceso sujeto a autorización de Tu Merch. |
 | P0-04 | Siigo de pruebas; cotización, PDF/URL, códigos, cliente y factura; evento fiscal y aprobaciones. | Contabilidad + Miguel | Guía espera accesos el 15/10 y procedimiento el 21/10. Fechas por reconfirmar. |
 | P0-05 | Medios de pago, confirmación, claves de prueba y decisión sobre Bold. | Brayan + contabilidad | Guía llama Bold opcional, pero el pago verificable es obligatorio en fase 1. |
@@ -184,7 +206,21 @@ Separar estados comercial, cotización, pago, orden y factura. Una oportunidad p
 
 Primero: preparar el diseño detallado de solicitudes, estados, validaciones y contratos de los flujos, y cerrar P0-02/03/07. Este trabajo puede avanzar antes de recibir la calculadora. Dejar la interfaz de descuentos definida y, si se usan datos ficticios de desarrollo, identificarlos expresamente como pruebas sin validez comercial. Desde el inicio del 15/10, preparar las pruebas de Siigo, pagos y pedido: son dependencias del recorrido completo.
 
-Después: hito 0 de pruebas de integración y limitaciones → hito 1 de reglas aprobadas → motor/cotización → cierre con pago/proveedor/fiscal → shadow → QA autorizado → piloto → salida aprobada. David confirma inicio el 15/10/2026 y estima que la salida probablemente se mueve al 15/11/2026. Esta última es una fecha tentativa, no un compromiso aprobado. No desplazar automáticamente cada fecha de dependencias 15 días: hay que reprogramar hitos y entregas con sus responsables. Las fechas anteriores del 7, 13–14, 15 y 21 de octubre permanecen solo como antecedentes de la guía, pendientes de reconfirmación con el nuevo inicio.
+Después: hito 0 de pruebas de integración y limitaciones → hito 1 de reglas aprobadas → motor/cotización → cierre con pago/proveedor/fiscal → shadow → QA autorizado → piloto → salida aprobada. David confirma inicio el 15/10/2026 y estima que la salida probablemente se mueve al 15/11/2026.
+
+Sobre ese inicio, [ADR-001](../decisiones/ADR-001-cronograma-y-fecha-de-salida.md) recalcula los hitos en días hábiles y propone separar el hito contractual del 29/10 —Fase 1 en lista de permitidos, con el acta y el segundo 50 %— de la apertura a todo el tráfico, que caería el 9/11. El 15/11 de la estimación de David queda como margen disponible si una dependencia llega tarde, no como fecha adicional.
+
+| Hito | Fecha propuesta | Estado |
+|---|---|---|
+| Arranque, pago inicial y accesos del hito 0 | jue 15/10 | Confirmado |
+| Cotizador en sombra, sin efectos externos | jue 22/10 | Propuesto |
+| Cierre digital en lista de permitidos, acta de Fase 1 | jue 29/10 | Propuesto; coincide con la fecha contractual |
+| Piloto con revisión humana | vie 30/10 – vie 6/11 | Propuesto |
+| Producción abierta | lun 9/11 | Propuesto; margen hasta el 15/11 |
+| Tablas M01–M09 y decisión del mes 2 | mar 3/11 | Propuesto; sustituye al 23/10 de la propuesta |
+| D3, marcación, costeo y métricas | 10/11 – lun 7/12 | Propuesto; sustituye al 3/11 – 27/11 |
+
+Ninguna de estas fechas es un compromiso aprobado hasta que Brayan lo confirme por escrito. **No desplazar automáticamente cada fecha de dependencias:** el cálculo anterior es insumo para reprogramar hitos y entregas con sus responsables, uno por uno. Las fechas anteriores del 7, 13–14, 15 y 21 de octubre permanecen solo como antecedentes de la guía, y su recálculo requiere reconfirmación con cada responsable.
 
 | Evidencia | Casos funcionales relacionados |
 |---|---|
@@ -219,3 +255,4 @@ Al terminar un bloque de trabajo, dejar un registro breve: qué cambió, cómo s
 - v0.1 · 09/10/2026: revisión de las fuentes y boceto inicial.
 - v0.2 · 10/10/2026: inicio 15/10, salida tentativa 15/11, rol de Miguel aclarado, Alejo/David confirmados y Juanfe pendiente; diseño desacoplado de la recepción de la calculadora; pautas de trabajo asíncrono.
 - v0.3 · 10/10/2026: GitHub conectado; David confirmó el repositorio privado `Ramirezgon19/tu-merch`; documentación inicial incorporada.
+- v0.4 · 12/10/2026: roadmap aprobado del 01/10 incorporado como fuente de autoridad contractual, transcrito a markdown y con su HTML original en el repositorio, junto con la propuesta que lo respalda; alcance contratado, exclusiones, honorarios y dependencias exigidas registrados en §1; parte de alcance de P0-02 cerrada; cronograma recalculado sobre el inicio del 15/10 en ADR-001 y reflejado en §9, pendiente de confirmación de Brayan; aviso de nomenclatura sobre «v2»; `CLAUDE.md` y `AGENTS.md` añadidos con las reglas para personas y agentes de código.

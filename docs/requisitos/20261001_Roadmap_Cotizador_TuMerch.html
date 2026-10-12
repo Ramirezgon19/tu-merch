@@ -1,0 +1,1029 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Roadmap del Cotizador Tu merch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: narrativa vertical de una columna (máx. 1120px) — marca → recorrido del pedido → cronograma → despliegues → casos → dependencias.
+   El gradiente del logo de Luup Lab (azul → violeta → turquesa) recorre los tres despliegues: D1 azul, D2 violeta, D3 turquesa. */
+:root{
+  --bg:#FFFFFF; --bg-alt:#F4F5F7; --surface:#FFFFFF; --surface-2:#FAFAFB;
+  --ink:#0E0E12; --ink-2:#5B5F6B; --ink-3:#8A8E99;
+  --line:#E7E8EE; --line-2:#D6D8E1;
+  --accent:#5B5BFF; --accent-2:#16C5C5;
+  --wm-1:#2B2F9E; --wm-2:#0B87A8;
+  --d0:#6F7383; --d1:#3F63F2; --d2:#7445DC; --d3:#0B97A8;
+  --d0-soft:rgba(111,115,131,.11); --d1-soft:rgba(63,99,242,.10); --d2-soft:rgba(116,69,220,.10); --d3-soft:rgba(11,151,168,.11);
+  --ok:#137F4E; --ok-soft:rgba(19,127,78,.11);
+  --run:#9A5B05; --run-soft:rgba(214,138,24,.15);
+  --blk:#C42D44; --blk-soft:rgba(196,45,68,.10);
+  --pen:#646875; --pen-soft:rgba(100,104,117,.10);
+  --grad:linear-gradient(90deg,#2F7BF5 0%,#6E45E2 52%,#17BFD3 100%);
+  --shadow:0 1px 2px rgba(14,14,40,.04),0 18px 40px -20px rgba(40,40,110,.22);
+  --shadow-sm:0 1px 2px rgba(14,14,40,.05),0 6px 16px -8px rgba(40,40,110,.16);
+  --f-sans:"Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --r-card:24px; --r-box:16px; --r-sm:10px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0B0B10; --bg-alt:#111118; --surface:#15151D; --surface-2:#1A1A23;
+    --ink:#F1F2F6; --ink-2:#A6AAB7; --ink-3:#7A7E8B;
+    --line:#24252F; --line-2:#323544;
+    --accent:#8B8BFF; --accent-2:#35D6D6;
+    --wm-1:#A9AEFF; --wm-2:#4BD5E3;
+    --d0:#979BA9; --d1:#7D93FF; --d2:#AB86F7; --d3:#38CAD8;
+    --d0-soft:rgba(151,155,169,.15); --d1-soft:rgba(125,147,255,.16); --d2-soft:rgba(171,134,247,.16); --d3-soft:rgba(56,202,216,.15);
+    --ok:#47CB8C; --ok-soft:rgba(71,203,140,.15);
+    --run:#F2B04B; --run-soft:rgba(242,176,75,.16);
+    --blk:#FF7489; --blk-soft:rgba(255,116,137,.15);
+    --pen:#A0A4B1; --pen-soft:rgba(160,164,177,.14);
+    --grad:linear-gradient(90deg,#5291FF 0%,#9068F2 52%,#2FD2E2 100%);
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 18px 40px -20px rgba(0,0,0,.7);
+    --shadow-sm:0 1px 2px rgba(0,0,0,.35),0 6px 16px -8px rgba(0,0,0,.6);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0B0B10; --bg-alt:#111118; --surface:#15151D; --surface-2:#1A1A23;
+  --ink:#F1F2F6; --ink-2:#A6AAB7; --ink-3:#7A7E8B;
+  --line:#24252F; --line-2:#323544;
+  --accent:#8B8BFF; --accent-2:#35D6D6;
+  --wm-1:#A9AEFF; --wm-2:#4BD5E3;
+  --d0:#979BA9; --d1:#7D93FF; --d2:#AB86F7; --d3:#38CAD8;
+  --d0-soft:rgba(151,155,169,.15); --d1-soft:rgba(125,147,255,.16); --d2-soft:rgba(171,134,247,.16); --d3-soft:rgba(56,202,216,.15);
+  --ok:#47CB8C; --ok-soft:rgba(71,203,140,.15);
+  --run:#F2B04B; --run-soft:rgba(242,176,75,.16);
+  --blk:#FF7489; --blk-soft:rgba(255,116,137,.15);
+  --pen:#A0A4B1; --pen-soft:rgba(160,164,177,.14);
+  --grad:linear-gradient(90deg,#5291FF 0%,#9068F2 52%,#2FD2E2 100%);
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 18px 40px -20px rgba(0,0,0,.7);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.35),0 6px 16px -8px rgba(0,0,0,.6);
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 15px/1.6 var(--f-sans);-webkit-font-smoothing:antialiased;padding-inline:16px;padding-block:0 48px}
+h1,h2,h3{text-wrap:balance;margin:0;letter-spacing:-.02em}
+p{margin:0}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1120px;margin-inline:auto}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.num{font-variant-numeric:tabular-nums}
+
+/* ---------- barra superior ---------- */
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;margin-inline:-16px;padding:10px 16px;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--line)}
+@supports not (background:color-mix(in srgb,red 50%,transparent)){.topbar{background:var(--bg)}}
+.topbar .wrap{display:flex;align-items:center;gap:16px}
+.brand{display:flex;align-items:center;gap:8px;text-decoration:none;flex:none}
+.brand img{width:46px;height:auto;display:block}
+.wordmark{font-weight:700;font-size:17px;letter-spacing:-.02em;line-height:1}
+.wordmark .a{color:var(--wm-1)} .wordmark .b{color:var(--wm-2)}
+.nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;min-width:0;flex:1}
+.nav::-webkit-scrollbar{display:none}
+.nav a{flex:none;color:var(--ink-2);text-decoration:none;font-size:13.5px;font-weight:500;padding:6px 10px;border-radius:999px}
+.nav a:hover{color:var(--ink);background:var(--bg-alt)}
+.sync{flex:none;display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:500;color:var(--ink-2);padding:5px 11px;border:1px solid var(--line);border-radius:999px;white-space:nowrap}
+.sync i{width:7px;height:7px;border-radius:50%;background:var(--ink-3)}
+.sync[data-s="live"] i{background:var(--ok);box-shadow:0 0 0 3px var(--ok-soft)}
+.sync[data-s="ro"] i{background:var(--d1)}
+.sync[data-s="off"] i{background:var(--run)}
+@media (max-width:760px){.nav{display:none}.sync .long{display:none}}
+
+/* ---------- encabezado ---------- */
+.hero{position:relative;padding-block:56px 28px;overflow:hidden}
+.hero svg.loop{position:absolute;right:-40px;top:8px;width:min(520px,70vw);height:auto;opacity:.9;pointer-events:none}
+.hero .loop .base{stroke:var(--line);}
+@media (max-width:640px){.hero svg.loop{display:none}}
+.eyebrow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:18px}
+.label{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;padding:3px 10px;border-radius:999px;border:1px solid var(--line-2);color:var(--ink-2);background:var(--surface)}
+.chip.warn{border-color:transparent;background:var(--run-soft);color:var(--run)}
+.hero h1{font-size:clamp(2.1rem,5.4vw,3.5rem);font-weight:700;line-height:1.05;max-width:16ch;position:relative}
+.hero .lede{margin-top:16px;font-size:clamp(1rem,1.6vw,1.15rem);color:var(--ink-2);max-width:60ch;position:relative}
+.facts{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:36px;border:1px solid var(--line);border-radius:var(--r-box);background:var(--surface);overflow:hidden}
+.fact{padding:16px 18px;border-left:1px solid var(--line);min-width:0}
+.fact:first-child{border-left:0}
+.fact dt{font-size:12px;color:var(--ink-3);font-weight:500}
+.fact dd{margin:4px 0 0;font-size:22px;font-weight:600;letter-spacing:-.02em;line-height:1.2}
+.fact dd small{display:block;font-size:12.5px;font-weight:400;color:var(--ink-2);letter-spacing:0;margin-top:2px}
+@media (max-width:760px){.facts{grid-template-columns:repeat(2,minmax(0,1fr))}.fact:nth-child(3){border-left:0}.fact:nth-child(n+3){border-top:1px solid var(--line)}}
+
+.progress-strip{position:relative;margin-top:14px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.ps{display:flex;flex-direction:column;gap:6px;min-width:0}
+.ps .row{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--ink-2)}
+.ps .row b{font-weight:600;color:var(--ink)}
+.bar{height:6px;border-radius:999px;background:var(--bg-alt);overflow:hidden}
+.bar span{display:block;height:100%;border-radius:999px;transition:width .5s ease}
+@media (max-width:560px){.progress-strip{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* ---------- secciones ---------- */
+section.block{padding-block:56px 0;scroll-margin-top:72px}
+.block-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 24px;margin-bottom:24px}
+.block-head h2{font-size:clamp(1.5rem,3vw,2rem);font-weight:700;margin-top:6px}
+.block-head p.sub{color:var(--ink-2);max-width:62ch;margin-top:8px}
+
+/* recorrido */
+.flow-index{display:flex;height:10px;border-radius:999px;overflow:hidden;gap:3px;margin-bottom:18px}
+.flow-index span{flex:1}
+.flow{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.step{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;gap:8px;padding:16px;border-radius:var(--r-box);background:var(--surface);border:1px solid var(--line);transition:transform .2s ease,box-shadow .2s ease,border-color .2s}
+.step:hover{transform:translateY(-2px);box-shadow:var(--shadow-sm);border-color:var(--line-2)}
+.step:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.step .top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.step .n{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font:600 13px/1 var(--f-mono);color:#fff}
+.step h3{font-size:15.5px;font-weight:600;letter-spacing:-.01em}
+.step p{font-size:13.5px;color:var(--ink-2);line-height:1.5}
+.sys{display:flex;flex-wrap:wrap;gap:4px;margin-top:auto;padding-top:4px}
+.sys span{font-size:11.5px;color:var(--ink-2);background:var(--bg-alt);padding:2px 8px;border-radius:999px}
+.dtag{font:600 11.5px/1 var(--f-mono);padding:4px 8px;border-radius:999px;white-space:nowrap}
+.c-d0{color:var(--d0)} .c-d1{color:var(--d1)} .c-d2{color:var(--d2)} .c-d3{color:var(--d3)}
+.bg-d0{background:var(--d0)} .bg-d1{background:var(--d1)} .bg-d2{background:var(--d2)} .bg-d3{background:var(--d3)}
+.soft-d0{background:var(--d0-soft);color:var(--d0)} .soft-d1{background:var(--d1-soft);color:var(--d1)} .soft-d2{background:var(--d2-soft);color:var(--d2)} .soft-d3{background:var(--d3-soft);color:var(--d3)}
+
+/* cronograma */
+.tl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r-box);background:var(--surface);padding:14px 14px 10px}
+.tl{position:relative;min-width:860px}
+.tl-row{display:grid;grid-template-columns:150px 1fr;align-items:center;min-height:40px}
+.tl-row.axis{min-height:26px}
+.tl-row.ms{min-height:64px}
+.tl-lab{font-size:12.5px;font-weight:500;color:var(--ink-2);padding-right:10px;line-height:1.25}
+.tl-lab b{display:block;color:var(--ink);font-weight:600;font-size:13px}
+.tl-track{position:relative;height:100%;min-height:inherit}
+.tl-grid{position:absolute;left:150px;right:0;top:0;bottom:0;pointer-events:none}
+.tl-grid .wk{position:absolute;top:26px;bottom:0;border-left:1px solid var(--line)}
+.tl-grid .hol{position:absolute;top:22px;bottom:0;border-left:2px dotted var(--blk);opacity:.55}
+.tl-grid .today{position:absolute;top:0;bottom:0;border-left:2px solid var(--accent)}
+.tl-grid .today span{position:absolute;bottom:2px;left:4px;font:600 10.5px/1 var(--f-sans);color:var(--accent);background:var(--surface);padding:2px 4px;border-radius:4px;white-space:nowrap}
+.tick{position:absolute;top:4px;font-size:11px;color:var(--ink-3);transform:translateX(-50%);white-space:nowrap}
+.tl-bar{all:unset;box-sizing:border-box;position:absolute;top:9px;height:22px;border-radius:999px;display:flex;align-items:center;padding:0 10px;font-size:11.5px;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;transition:filter .2s,transform .2s}
+.tl-bar:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.tl-bar:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.tl-bar.bg-d0{background-color:var(--d0)} .tl-bar.bg-d1{background-color:var(--d1)} .tl-bar.bg-d2{background-color:var(--d2)} .tl-bar.bg-d3{background-color:var(--d3)}
+.tl-bar.ghost{background:var(--bg-alt);color:var(--ink-2);border:1px dashed var(--line-2)}
+.tl-bar.hatch{background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.18) 0 6px,transparent 6px 12px)}
+.msk{position:absolute;top:50%;width:12px;height:12px;transform:translate(-50%,-50%) rotate(45deg);border-radius:2px;border:2px solid var(--surface)}
+.msl{position:absolute;transform:translateX(-50%);font-size:11px;font-weight:600;white-space:nowrap;color:var(--ink)}
+.msl small{display:block;font-weight:400;color:var(--ink-3);font-size:10.5px;text-align:center}
+.msl.up{bottom:calc(50% + 10px)} .msl.dn{top:calc(50% + 10px)}
+.tl-legend{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:10px;font-size:12px;color:var(--ink-2)}
+.tl-legend span{display:inline-flex;align-items:center;gap:6px}
+.tl-legend i{display:inline-block;width:14px;height:0;border-top:2px dotted var(--blk)}
+.tl-legend i.t{border-top:2px solid var(--accent)}
+
+/* despliegues */
+.stages{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:16px}
+@media (max-width:900px){.stages{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:440px){.stages{grid-template-columns:1fr}}
+.stage-card{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;gap:10px;padding:16px 16px 14px;border-radius:var(--r-box);border:1.5px solid var(--line);background:var(--surface);min-width:0;transition:box-shadow .2s,transform .2s}
+.stage-card:hover{box-shadow:var(--shadow-sm);transform:translateY(-1px)}
+.stage-card:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.stage-card[aria-selected="true"]{border-color:transparent;background:linear-gradient(var(--surface),var(--surface)) padding-box,var(--grad) border-box;box-shadow:var(--shadow-sm)}
+.stage-card .hd{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.stage-card .code{font:600 20px/1 var(--f-mono)}
+.stage-card .nm{font-weight:600;font-size:15px;line-height:1.3}
+.stage-card .dt{font-size:12.5px;color:var(--ink-2)}
+.stage-card .pr{display:flex;justify-content:space-between;font-size:12px;color:var(--ink-2)}
+
+.detail{border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden}
+.detail-head{padding:28px 28px 22px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:auto 1fr;gap:6px 20px;align-items:start}
+.detail-head .big{font:600 clamp(2.4rem,6vw,3.6rem)/1 var(--f-mono);letter-spacing:-.04em}
+.detail-head h3{font-size:clamp(1.25rem,2.4vw,1.6rem);font-weight:700}
+.detail-head .when{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.detail-head .obj{grid-column:1/-1;margin-top:12px;color:var(--ink-2);max-width:78ch;font-size:15.5px}
+.detail-head .obj b{color:var(--ink);font-weight:600}
+@media (max-width:560px){.detail-head{grid-template-columns:1fr;padding:22px 18px 18px}}
+.detail-body{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}
+.detail-body > div{padding:22px 28px 26px;min-width:0}
+.detail-body > div + div{border-left:1px solid var(--line);background:var(--surface-2)}
+@media (max-width:860px){.detail-body{grid-template-columns:1fr}.detail-body > div + div{border-left:0;border-top:1px solid var(--line)}.detail-body > div{padding:20px 18px 22px}}
+.col-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:4px}
+.col-h h4{margin:0;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.col-h span{font-size:12px;color:var(--ink-3)}
+.sub-h{margin:22px 0 4px;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+
+.list{list-style:none;margin:0;padding:0}
+.item{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 14px;padding:13px 0 13px 0;border-top:1px solid var(--line);align-items:start}
+.item:first-child{border-top:0}
+.item.is-blk{box-shadow:inset 3px 0 0 var(--blk);padding-left:12px}
+.item .t{font-weight:500;font-size:14.5px;line-height:1.4}
+.item.is-ok .t{color:var(--ink-2)}
+.item .d{grid-column:1;font-size:13.5px;color:var(--ink-2);line-height:1.5}
+.item .m{grid-column:1/-1;font-size:12px;color:var(--ink-3);display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center}
+.item .side{grid-row:1/span 2;grid-column:2;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.when-tag{font:500 11px/1 var(--f-mono);color:var(--ink-3);border:1px solid var(--line-2);border-radius:999px;padding:3px 7px;white-space:nowrap}
+.derived{font-size:12px;color:var(--ink-2)}
+.derived b{font-weight:600;color:var(--ink)}
+
+.case-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.case-chip{all:unset;cursor:pointer;font:600 12px/1 var(--f-mono);padding:6px 9px;border-radius:999px;border:1px solid var(--line-2);display:inline-flex;align-items:center;gap:6px;color:var(--ink)}
+.case-chip:hover{border-color:var(--ink-3)}
+.case-chip:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.case-chip i{width:7px;height:7px;border-radius:50%}
+
+.prereq{margin-top:16px;padding:12px 14px;border-radius:var(--r-sm);background:var(--run-soft);color:var(--ink);font-size:13.5px}
+.prereq b{color:var(--run)}
+
+/* estado */
+.pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px 4px 9px;border-radius:999px;font:500 12px/1.2 var(--f-sans);border:1px solid transparent;white-space:nowrap}
+.pill .dot{width:7px;height:7px;border-radius:50%;background:currentColor;flex:none}
+button.pill{cursor:pointer}
+button.pill:hover{border-color:currentColor}
+button.pill::after{content:"";width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-2px);margin-left:2px;opacity:.7}
+.s-pendiente{color:var(--pen);background:var(--pen-soft)}
+.s-en_curso{color:var(--run);background:var(--run-soft)}
+.s-cumplido{color:var(--ok);background:var(--ok-soft)}
+.s-bloqueado{color:var(--blk);background:var(--blk-soft)}
+.i-pendiente{background:var(--pen)} .i-en_curso{background:var(--run)} .i-cumplido{background:var(--ok)} .i-bloqueado{background:var(--blk)}
+
+.menu{position:absolute;z-index:40;min-width:176px;padding:6px;border-radius:14px;background:var(--surface);border:1px solid var(--line-2);box-shadow:var(--shadow)}
+.menu button{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:10px;width:100%;padding:8px 10px;border-radius:9px;font-size:13.5px;cursor:pointer;color:var(--ink)}
+.menu button:hover,.menu button:focus-visible{background:var(--bg-alt)}
+.menu button[aria-checked="true"]{font-weight:600}
+.menu button i{width:8px;height:8px;border-radius:50%}
+.menu .mh{font-size:11.5px;color:var(--ink-3);padding:6px 10px 4px}
+
+/* casos */
+.filters{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.fbtn{all:unset;cursor:pointer;font-size:13px;font-weight:500;padding:6px 12px;border-radius:999px;border:1px solid var(--line-2);color:var(--ink-2)}
+.fbtn:hover{color:var(--ink)}
+.fbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.fbtn[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.fsep{width:1px;height:20px;background:var(--line-2);margin-inline:4px}
+.cases{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin-top:16px}
+.case{display:flex;flex-direction:column;gap:8px;padding:16px;border-radius:var(--r-box);border:1px solid var(--line);background:var(--surface);min-width:0;scroll-margin-top:90px}
+.case.flash{animation:flash 1.4s ease}
+@keyframes flash{0%,40%{box-shadow:0 0 0 3px var(--accent)}100%{box-shadow:0 0 0 0 transparent}}
+.case .hd{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.case .code{font:600 14px/1 var(--f-mono)}
+.case h3{font-size:15px;font-weight:600;letter-spacing:-.01em}
+.case p{font-size:13.5px;color:var(--ink-2);line-height:1.5}
+.case .ft{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto;padding-top:6px}
+.empty{padding:28px;text-align:center;color:var(--ink-2);border:1px dashed var(--line-2);border-radius:var(--r-box);margin-top:16px}
+
+/* dependencias */
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r-box);background:var(--surface)}
+table{width:100%;border-collapse:collapse;min-width:680px}
+th,td{text-align:left;padding:12px 14px;border-top:1px solid var(--line);vertical-align:top;font-size:14px}
+thead th{border-top:0;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);background:var(--surface-2)}
+td.what{width:46%}
+td .od{display:block;font-size:12px;color:var(--blk);font-weight:500;margin-top:2px}
+td.date{white-space:nowrap}
+tr.is-blk td:first-child{box-shadow:inset 3px 0 0 var(--blk)}
+.two{display:grid;grid-template-columns:1fr;gap:28px}
+.two > div,.block-head > div{min-width:0}
+.two h3{font-size:17px;font-weight:600;margin-bottom:10px}
+
+/* fuera de alcance */
+.out{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.out div{padding:16px;border-radius:var(--r-box);background:var(--bg-alt);min-width:0}
+.out b{display:block;font-weight:600;font-size:14.5px;margin-bottom:4px}
+.out p{font-size:13.5px;color:var(--ink-2)}
+
+/* pie */
+footer{margin-top:64px;padding-top:24px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:16px 32px;justify-content:space-between;align-items:flex-start}
+footer .brand img{width:40px}
+footer p{font-size:13px;color:var(--ink-2);max-width:62ch}
+footer .tag{font-weight:600;color:var(--ink);font-size:14px;margin-bottom:4px}
+.copy{all:unset;cursor:pointer;font:500 13px/1 var(--f-mono);color:var(--ink);border:1px solid var(--line-2);border-radius:999px;padding:7px 12px;user-select:all}
+.copy:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.legend{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:12.5px;color:var(--ink-2)}
+
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:50;background:var(--ink);color:var(--bg);font-size:13.5px;padding:10px 16px;border-radius:999px;box-shadow:var(--shadow);max-width:calc(100% - 32px)}
+
+/* infinito animado */
+.loop .glow{stroke-dasharray:120 1100;animation:run 7s linear infinite}
+@keyframes run{to{stroke-dashoffset:-1220}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .loop .glow{animation:none;stroke-dasharray:none;opacity:.35}
+  .step,.stage-card,.tl-bar,.bar span{transition:none}
+  .case.flash{animation:none}
+}
+</style>
+
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="Luup Lab, inicio">
+      <svg viewBox="0 0 120 50" width="46" height="19" aria-hidden="true"><defs><linearGradient id="lgm" x1="0" x2="1"><stop offset="0" stop-color="#2F7BF5"/><stop offset=".52" stop-color="#6E45E2"/><stop offset="1" stop-color="#17BFD3"/></linearGradient></defs><path d="M60 25 C 50 8, 14 8, 14 25 C 14 42, 50 42, 60 25 C 70 8, 106 8, 106 25 C 106 42, 70 42, 60 25 Z" fill="none" stroke="url(#lgm)" stroke-width="8" stroke-linecap="round"/></svg>
+      <span class="wordmark"><span class="a">Luup</span> <span class="b">Lab</span></span>
+    </a>
+    <nav class="nav" aria-label="Secciones">
+      <a href="#recorrido">Recorrido</a>
+      <a href="#cronograma">Cronograma</a>
+      <a href="#entregables">Entregables</a>
+      <a href="#casos">Casos</a>
+      <a href="#dependencias">Lo que necesitamos</a>
+      <a href="#alcance">Fuera del alcance</a>
+    </nav>
+    <span class="sync" id="sync" data-s="wait" role="status"><i></i><span id="syncText">Conectando<span class="long"> el estado compartido</span></span></span>
+  </div>
+</header>
+
+<main class="wrap" id="inicio">
+  <section class="hero">
+    <svg class="loop" viewBox="0 0 520 220" aria-hidden="true" fill="none">
+      <defs>
+        <linearGradient id="lg" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0" stop-color="#2F7BF5"/><stop offset=".52" stop-color="#6E45E2"/><stop offset="1" stop-color="#17BFD3"/>
+        </linearGradient>
+      </defs>
+      <path class="base" d="M260 110 C 215 40, 70 40, 70 110 C 70 180, 215 180, 260 110 C 305 40, 450 40, 450 110 C 450 180, 305 180, 260 110 Z" stroke-width="2"/>
+      <path class="glow" d="M260 110 C 215 40, 70 40, 70 110 C 70 180, 215 180, 260 110 C 305 40, 450 40, 450 110 C 450 180, 305 180, 260 110 Z" stroke="url(#lg)" stroke-width="5" stroke-linecap="round"/>
+    </svg>
+    <div class="eyebrow">
+      <span class="label">Tu merch × Luup Lab</span>
+      <span class="chip warn">Propuesta · pendiente de aprobación</span>
+    </div>
+    <h1>Cotizador automático</h1>
+    <p class="lede">Del mensaje de WhatsApp a la factura electrónica. Tres despliegues para que una compra estándar recorra cotización, pago, pedido al proveedor y factura sin volver a capturar datos, con salida a producción el jueves 29 de octubre de 2026.</p>
+    <dl class="facts">
+      <div class="fact"><dt>Salida de la Fase 1</dt><dd>29 oct<small id="countdown">jueves</small></dd></div>
+      <div class="fact"><dt>Construcción</dt><dd>3 semanas<small>del 1 al 21 de octubre</small></dd></div>
+      <div class="fact"><dt>Casos de aceptación</dt><dd class="num">19<small>12 de Fase 1 · 7 de marcación</small></dd></div>
+      <div class="fact"><dt>Avance general</dt><dd class="num" id="overall">0 %<small>de entregables y criterios</small></dd></div>
+    </dl>
+    <div class="progress-strip" id="strip"></div>
+  </section>
+
+  <section class="block" id="recorrido">
+    <div class="block-head">
+      <div>
+        <span class="label">Qué construimos</span>
+        <h2>El recorrido de un pedido</h2>
+        <p class="sub">Nueve pasos, desde que llega la solicitud hasta que el pedido queda facturado y medido. El color indica en qué despliegue entra cada paso; toca uno para ver su detalle.</p>
+      </div>
+      <div class="legend" aria-label="Despliegues">
+        <span class="dtag soft-d1">D1</span><span>Cotizador en sombra</span>
+        <span class="dtag soft-d2">D2</span><span>Cierre digital</span>
+        <span class="dtag soft-d3">D3</span><span>Marcación y medición</span>
+      </div>
+    </div>
+    <div class="flow-index" aria-hidden="true" id="flowIndex"></div>
+    <div class="flow" id="flow"></div>
+  </section>
+
+  <section class="block" id="cronograma">
+    <div class="block-head">
+      <div>
+        <span class="label">Cuándo</span>
+        <h2>Cronograma</h2>
+        <p class="sub">De la respuesta a la estimación hasta el cierre del soporte. Las barras abren el despliegue correspondiente.</p>
+      </div>
+    </div>
+    <div class="tl-wrap"><div class="tl" id="tl"></div></div>
+    <div class="tl-legend">
+      <span><i class="t"></i>Hoy</span>
+      <span><i></i>Festivo en Colombia</span>
+      <span>Las fechas internas cuentan días hábiles desde la entrega de accesos (martes 6 de octubre).</span>
+    </div>
+  </section>
+
+  <section class="block" id="entregables">
+    <div class="block-head">
+      <div>
+        <span class="label">Qué entregamos</span>
+        <h2>Despliegues, entregables y criterios</h2>
+        <p class="sub">Cada despliegue cierra cuando sus criterios de aceptación tienen evidencia. El estado de cada línea es compartido: quien tenga permiso de edición puede actualizarlo.</p>
+      </div>
+      <div class="legend">
+        <span class="pill s-pendiente"><span class="dot"></span>Pendiente</span>
+        <span class="pill s-en_curso"><span class="dot"></span>En curso</span>
+        <span class="pill s-cumplido"><span class="dot"></span>Cumplido</span>
+        <span class="pill s-bloqueado"><span class="dot"></span>Bloqueado</span>
+      </div>
+    </div>
+    <div class="stages" role="tablist" aria-label="Despliegues" id="stages"></div>
+    <div class="detail" role="tabpanel" id="detail" aria-live="polite"></div>
+  </section>
+
+  <section class="block" id="casos">
+    <div class="block-head">
+      <div>
+        <span class="label">Cómo se acepta</span>
+        <h2>Casos de aceptación</h2>
+        <p class="sub">Los casos que Tu merch definió en su documento (§21 y §22). Se aprueban por cálculo, documento, seguimiento y continuación del pedido, no por la apariencia del PDF.</p>
+      </div>
+      <div class="filters" id="caseFilters"></div>
+    </div>
+    <div class="cases" id="cases"></div>
+  </section>
+
+  <section class="block" id="dependencias">
+    <div class="block-head">
+      <div>
+        <span class="label">Lo que necesitamos de Tu merch</span>
+        <h2>Accesos, insumos y decisiones</h2>
+        <p class="sub">El 29 de octubre se sostiene si estos puntos llegan en su fecha. Ningún acceso viaja por correo ni por el grupo de WhatsApp: se entregan por el canal seguro que defina Tecnología.</p>
+      </div>
+      <div class="filters" id="depFilters"></div>
+    </div>
+    <div class="two">
+      <div>
+        <h3>Accesos e insumos</h3>
+        <div class="table-wrap"><table><thead><tr><th scope="col">Estado</th><th scope="col">Qué necesitamos</th><th scope="col">Responsable</th><th scope="col">Fecha</th><th scope="col">Desbloquea</th></tr></thead><tbody id="deps"></tbody></table></div>
+      </div>
+      <div>
+        <h3>Decisiones</h3>
+        <div class="table-wrap"><table><thead><tr><th scope="col">Estado</th><th scope="col">Decisión</th><th scope="col">Responsable</th><th scope="col">Fecha</th><th scope="col">Desbloquea</th></tr></thead><tbody id="decs"></tbody></table></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="alcance">
+    <div class="block-head">
+      <div>
+        <span class="label">Límites</span>
+        <h2>Fuera del alcance</h2>
+        <p class="sub">Lo que este proyecto no construye. Cualquiera de estos puntos puede cotizarse aparte cuando Tu merch lo decida.</p>
+      </div>
+    </div>
+    <div class="out" id="out"></div>
+  </section>
+
+  <footer>
+    <div>
+      <a class="brand" href="#inicio" aria-label="Luup Lab, volver arriba">
+        <svg viewBox="0 0 120 50" width="46" height="19" aria-hidden="true"><defs><linearGradient id="lgm" x1="0" x2="1"><stop offset="0" stop-color="#2F7BF5"/><stop offset=".52" stop-color="#6E45E2"/><stop offset="1" stop-color="#17BFD3"/></linearGradient></defs><path d="M60 25 C 50 8, 14 8, 14 25 C 14 42, 50 42, 60 25 C 70 8, 106 8, 106 25 C 106 42, 70 42, 60 25 Z" fill="none" stroke="url(#lgm)" stroke-width="8" stroke-linecap="round"/></svg>
+        <span class="wordmark"><span class="a">Luup</span> <span class="b">Lab</span></span>
+      </a>
+      <p style="margin-top:10px">Fuente: propuesta de Luup Lab para el cotizador automático (1 de octubre de 2026) y paquete de estimación de Tu merch (definición funcional del 19 de septiembre y anexo técnico del 24 de septiembre). Cubierto por el NDA del 23 de septiembre de 2026.</p>
+    </div>
+    <div>
+      <p class="tag">Nosotros lo construimos, tú lo operas.</p>
+      <button class="copy" id="mail" type="button" title="Copiar correo">hola@luuplab.com</button>
+    </div>
+  </footer>
+</main>
+
+<div class="menu" id="menu" role="menu" hidden></div>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script>
+(function(){
+"use strict";
+
+/* ===================== Contenido ===================== */
+const STAGES = [
+  { id:"K", code:"K", tone:"d0", name:"Respuesta y arranque", short:"Arranque", dates:"1 – 6 oct", start:"2026-10-01", end:"2026-10-06",
+    when:["Kickoff · lunes 5 de octubre","Accesos · martes 6 de octubre"], hitos:"Antes del hito 0",
+    objective:"Cerrar el acuerdo, abrir los canales de trabajo y recibir los accesos para empezar a construir el <b>miércoles 7 de octubre</b>.",
+    deliverables:[
+      {id:"k-e1", t:"NDA firmado", d:"Con los ajustes acordados en datos personales y cláusula penal. Firmado el 23 de septiembre."},
+      {id:"k-e2", t:"Paquete de estimación de Tu merch analizado", d:"Definición funcional (19/09) y anexo técnico (24/09), leídos completos y cruzados con la arquitectura actual."},
+      {id:"k-e3", t:"Propuesta enviada a Tu merch", d:"Alcance por hito, cronograma, dependencias, inversión, equipo y riesgos."},
+      {id:"k-e4", t:"Reunión de cierre y kickoff", d:"Lunes 5 de octubre, una hora, con Brayan, Miguel y la persona comercial."},
+      {id:"k-e5", t:"Grupo de trabajo en WhatsApp", d:"Las personas clave de Tu merch y el equipo de Luup Lab. Cada decisión queda registrada como issue el mismo día."},
+      {id:"k-e6", t:"Repositorio, backlog y reglas para agentes de código", d:"Issues con criterio de aceptación y evidencia; CLAUDE.md y AGENTS.md en la raíz del repositorio."}
+    ],
+    criteria:[
+      {id:"k-c1", t:"Contrato de honorarios firmado y anticipo recibido antes del miércoles 7 de octubre"},
+      {id:"k-c2", t:"Accesos del hito 0 recibidos y probados el martes 6 de octubre"}
+    ],
+    cases:[], deps:["dep-01","dep-02","dep-03","dep-04","dep-05","dep-06"]
+  },
+  { id:"D1", code:"D1", tone:"d1", name:"Cotizador en sombra", short:"Sombra", dates:"7 – 14 oct", start:"2026-10-07", end:"2026-10-14",
+    when:["Despliegue · miércoles 14 de octubre","Modo sombra"], hitos:"Hitos 0, 1 y 2",
+    objective:"Desde que se dispara, una solicitud cualificada produce <b>en menos de dos minutos</b> una cotización correcta registrada en Siigo y un PDF con el formato de Tu merch, lista para que la persona comercial la revise y la envíe. Nada sale al cliente final de forma automática.",
+    deliverables:[
+      {id:"d1-e1", t:"Evidencia de accesos y prueba por integración", d:"Shopify en lectura; Mercately crear y mover negociación; Siigo cliente, producto, cotización con URL pública y factura en pruebas; Bold en pruebas."},
+      {id:"d1-e2", t:"Detección de solicitudes en Mercately", d:"Sondeo cada 10 minutos en horario hábil, enganche al agente MIA o, como mínimo garantizado, comando del asesor con el identificador de la negociación."},
+      {id:"d1-e3", t:"Solicitud estructurada", d:"El extractor de Gemini de Tu merch, extendido con variante o color, dirección, fecha requerida y modalidad. Si algo es ambiguo, pide solo lo que falta."},
+      {id:"d1-e4", t:"Motor de cálculo en la plataforma de Tu merch", d:"Precio de Shopify, mínimo por metacampo y stock por variante, calculadora de descuentos original, IVA del 19 %, transporte a Bogotá y Sabana, vigencia de 5 días hábiles con festivos."},
+      {id:"d1-e5", t:"Snapshot versionado de cada cotización", d:"Precio tomado, versión de la calculadora y disponibilidad consultada, recuperables por identificador."},
+      {id:"d1-e6", t:"Cotización registrada en Siigo", d:"Producto creado bajo demanda con el código de la variante; cotización con enlace público; consecutivo que continúa la numeración actual."},
+      {id:"d1-e7", t:"PDF con el formato de Tu merch", d:"Generado desde la plantilla de Google Slides: portada, cuerpo con enlace a la ficha de cada producto, página institucional y términos."},
+      {id:"d1-e8", t:"Registro en Mercately y cola de revisión", d:"Enlaces de Siigo y del PDF en la negociación; alerta al asesor para aprobar o rechazar con motivo."},
+      {id:"d1-e9", t:"Modo sombra, alertas y repositorio", d:"Registra lo que haría sin efectos externos; errores al bot de Telegram; integración continua con pruebas."},
+      {id:"d1-e10", t:"Línea base de operación", d:"Volumen, tiempo manual, tasa de revisión y motivos de bloqueo, registrados desde el 6 de octubre para comparar después (§19)."}
+    ],
+    criteria:[
+      {id:"d1-c1", t:"A01 a A09 con evidencia en cálculo y documento", cases:["A01","A02","A03","A04","A05","A06","A07","A08","A09"]},
+      {id:"d1-c2", t:"Las cinco cotizaciones reales de muestra reproducidas al peso"},
+      {id:"d1-c3", t:"Cero escrituras en Shopify"},
+      {id:"d1-c4", t:"Snapshot recuperable por identificador"},
+      {id:"d1-c5", t:"Ningún mensaje automático al cliente final"},
+      {id:"d1-c6", t:"Cotización y PDF listos en menos de dos minutos desde el disparo"}
+    ],
+    cases:["A01","A02","A03","A04","A05","A06","A07","A08","A09"], deps:["dep-01","dep-02","dep-03","dep-04","dep-05","dep-06","dep-07","dep-08"]
+  },
+  { id:"D2", code:"D2", tone:"d2", name:"Cierre digital", short:"Cierre", dates:"15 – 29 oct", start:"2026-10-15", end:"2026-10-29",
+    when:["Lista de permitidos · miércoles 21 de octubre","Piloto · 22 al 28","Producción · jueves 29 de octubre"], hitos:"Hitos 3, 4 y 5",
+    objective:"Un pedido estándar sin marcación recorre <b>cotización, envío, pago, pedido al proveedor y factura</b> sin volver a capturar información. La Fase 1 queda operable por Tu merch.",
+    deliverables:[
+      {id:"d2-e1", w:"21 oct", t:"Envío de la cotización por plantilla de WhatsApp", d:"Con revisión del asesor antes de cada envío mientras dura la lista de permitidos. Si Meta aún no aprueba la plantilla, el asesor envía con el texto listo."},
+      {id:"d2-e2", w:"21 oct", t:"Confirmación de pago idempotente", d:"Llave Bre-B, PSE por Rappipay y transferencia, con soporte. Una confirmación repetida no crea un segundo pedido."},
+      {id:"d2-e3", w:"21 oct", t:"Revalidación de stock antes del cobro", d:"Con la regla de reserva que decida Tu merch. La cotización nunca se presenta como reserva confirmada."},
+      {id:"d2-e4", w:"21 oct", t:"Cliente fiscal en Siigo desde el formulario", d:"Datos de Google Forms validados; sin clientes duplicados por NIT."},
+      {id:"d2-e5", w:"21 oct", t:"Pedido al proveedor", d:"Plantilla de WhatsApp con el SKU del proveedor; operación registra la aceptación o el rechazo."},
+      {id:"d2-e6", w:"21 oct", t:"Factura en Siigo para revisión del cliente", d:"Sin envío a DIAN. El asesor registra la conformidad del cliente."},
+      {id:"d2-e7", w:"21 oct", t:"Bitácora de eventos y etapas en Mercately", d:"Cada evento con fecha, identificador y origen. Un estado nunca sustituye a otro: ganada no significa pagada."},
+      {id:"d2-e8", w:"21 oct", t:"Interruptor de pausa", d:"Detiene la automatización sin perder solicitudes y la reanuda en orden."},
+      {id:"d2-e9", w:"Piloto", t:"Enlace de pago Bold", d:"Para tarjeta y, si Tu merch lo decide, PSE. Vence con la cotización; webhook y consulta de estado; cada notificación se procesa una sola vez."},
+      {id:"d2-e10", w:"Piloto", t:"Emisión a DIAN", d:"Tras la aprobación del asesor, por API o desde la interfaz de Siigo según la prueba del hito 0."},
+      {id:"d2-e11", w:"Piloto", t:"Expediente en Drive", d:"Carpeta por cliente y pedido con enlaces a cotización, soporte de pago y factura."},
+      {id:"d2-e12", w:"Piloto", t:"Runbook y documentación", d:"Detener, reactivar y recuperar el servicio; mapeo de campos e identificadores; documentación de despliegue."},
+      {id:"d2-e13", w:"Piloto", t:"Transferencia de la Fase 1", d:"El equipo de Tu merch modifica una regla, revisa una excepción, encuentra una versión y rastrea un pago hasta su factura."}
+    ],
+    criteria:[
+      {id:"d2-c1", t:"A10, A11 y A12 con evidencia, y regresión de A01 a A09", cases:["A10","A11","A12"]},
+      {id:"d2-c2", t:"Un pedido de prueba de extremo a extremo: cotización, pago, confirmación del proveedor, factura y CRM actualizado"},
+      {id:"d2-c3", t:"Una confirmación de pago reenviada no duplica pedido ni factura"},
+      {id:"d2-c4", t:"Pausa y reactivación sin pérdida de solicitudes"},
+      {id:"d2-c5", t:"El mismo total al peso en cotización, cobro y factura, incluida la línea de envío"},
+      {id:"d2-c6", t:"Acta de aceptación de la Fase 1 firmada el 29 de octubre"}
+    ],
+    cases:["A07","A09","A10","A11","A12"], deps:["dep-09","dep-10","dep-11","dep-12","dep-13","dep-15"]
+  },
+  { id:"D3", code:"D3", tone:"d3", name:"Marcación Copilot, costeo y métricas", short:"Mes 2", dates:"3 – 27 nov", start:"2026-11-03", end:"2026-11-27",
+    when:["Mes 2 · sujeto a aprobación","Marcación en sombra · viernes 13 de noviembre","Entrega · viernes 27 de noviembre"], hitos:"Hito 6",
+    objective:"El asesor define técnica, posiciones y colores en un formulario y obtiene <b>la cotización con marcación en segundos</b>, como Copilot y no como agente autónomo. Tu merch ve la contribución por pedido y seis indicadores.",
+    prereq:"Las tablas de marcación M01 a M09 entregadas el <b>viernes 23 de octubre</b>. Sin tablas no hay regla definitiva (§24) y el mes 2 no puede arrancar el 3 de noviembre.",
+    deliverables:[
+      {id:"d3-e1", t:"Tablas de marcación versionadas", d:"M01 a M09, declarando por tabla si contiene costo (se aplica ×1,5) o precio de venta (no se remarca), unidad de cobro, condiciones e inclusiones."},
+      {id:"d3-e2", t:"Motor de marcación", d:"Sin doble markup; kits y productos custom sin cargo duplicado; anticipo del 50 % en pedidos personalizados."},
+      {id:"d3-e3", t:"Formulario Copilot del asesor", d:"Elige la combinación válida por producto y genera la cotización borrador para revisar y enviar."},
+      {id:"d3-e4", t:"Ficha de producto en el PDF", d:"Para propuestas con personalización: descripción, características, inversión y tiempo de entrega."},
+      {id:"d3-e5", t:"Costeo por pedido y contribución", d:"Reutiliza el archivado de facturas de proveedor; contribución provisional y porcentaje de pedidos con costeo completo."},
+      {id:"d3-e6", t:"Reporte de seis indicadores", d:"Tiempo de generación, tiempo hasta envío, automatización sin intervención, cotizaciones enviadas, ganadas y perdidas, conversión a pago. Comparados con la línea base."},
+      {id:"d3-e7", t:"Archivado de factura en el expediente", d:"PDF y XML de cada factura en la carpeta del pedido, sin duplicados."},
+      {id:"d3-e8", t:"Evaluación de Qstomizer", d:"Informe de un día: qué variables se pueden extraer y cuáles no, sin integración."},
+      {id:"d3-e9", t:"Entrega final y transferencia de la Fase 2", d:"Documentación actualizada, sesión de transferencia y 30 días de soporte."}
+    ],
+    criteria:[
+      {id:"d3-c1", t:"M-A01 a M-A07 con evidencia", cases:["M-A01","M-A02","M-A03","M-A04","M-A05","M-A06","M-A07"]},
+      {id:"d3-c2", t:"La misma configuración produce el mismo precio en el formulario y en el documento"},
+      {id:"d3-c3", t:"Contribución visible en al menos diez pedidos"},
+      {id:"d3-c4", t:"El equipo de Tu merch ejecuta la transferencia sin Luup Lab"}
+    ],
+    cases:["M-A01","M-A02","M-A03","M-A04","M-A05","M-A06","M-A07"], deps:["dep-14"]
+  }
+];
+
+const CASES = [
+  {id:"A01", st:["D1"], t:"Precio ya publicado", d:"El precio de Shopify se usa como precio de venta. No se le añade nuevamente el markup del 40 %."},
+  {id:"A02", st:["D1"], t:"Pedido válido sin descuento", d:"Stock, mínimo, precio, cantidad y totales coinciden con las fuentes. El enlace del producto abre la ficha correcta."},
+  {id:"A03", st:["D1"], t:"Rangos de descuento", d:"Valores justo antes, exactamente en y justo después de cada límite de la calculadora original."},
+  {id:"A04", st:["D1"], t:"Pedido con varias líneas", d:"El monto para descuento corresponde al conjunto de productos aplicables. Marcación y transporte no elevan el tramo."},
+  {id:"A05", st:["D1"], t:"Variantes y mínimo", d:"Distintos colores o tallas y cantidades por debajo, en y por encima del mínimo, sin mezclar inventario de variantes."},
+  {id:"A06", st:["D1"], t:"Sin stock o dato faltante", d:"El sistema conserva la solicitud, explica el bloqueo y no genera un cobro válido con información inventada."},
+  {id:"A07", st:["D1","D2"], t:"Impuestos y redondeos", d:"Líneas, descuento, impuestos y transporte coinciden en la cotización, el enlace de pago y la factura."},
+  {id:"A08", st:["D1"], t:"Transporte", d:"Bogotá, municipios de Sabana y otra ciudad; importes alrededor del umbral; transporte a cargo del cliente sin mostrarlo como gratis."},
+  {id:"A09", st:["D1","D2"], t:"Vigencia", d:"Vencimiento de 5 días hábiles con el calendario acordado. Una cotización vencida no cobra como si siguiera vigente."},
+  {id:"A10", st:["D2"], t:"Flujo completo", d:"La solicitud genera cotización, envío, pago confirmado, pedido al proveedor y factura sin recapturar información."},
+  {id:"A11", st:["D2"], t:"Reintentos y duplicados", d:"Reenviar la confirmación de pago y otros eventos conserva un solo pedido y una sola factura."},
+  {id:"A12", st:["D2"], t:"Incidencias posteriores", d:"Cambios de stock, rechazo del proveedor y error de facturación quedan visibles. La compra pagada no se modifica y el caso no se pierde."},
+  {id:"M-A01", st:["D3"], t:"Personalización incluida", d:"Un kit o referencia custom no recibe un cargo duplicado. Las restricciones de lo incluido quedan visibles."},
+  {id:"M-A02", st:["D3"], t:"Costo de proveedor", d:"El precio de marcación resulta de costo × 1,50. Se conservan costo, fuente y versión."},
+  {id:"M-A03", st:["D3"], t:"Tarifa de venta publicada", d:"Si la fuente ya contiene precio de venta, el 50 % no se aplica por segunda vez."},
+  {id:"M-A04", st:["D3"], t:"Cambios de cantidad o tamaño", d:"El resultado cambia según la tabla real, incluidos límites, unidades y costos fijos."},
+  {id:"M-A05", st:["D3"], t:"Material, técnica y posiciones", d:"La combinación es válida para el producto y se cobran solo las posiciones o conceptos aprobados."},
+  {id:"M-A06", st:["D3"], t:"Arte fuera de regla", d:"Colores no definidos, degradados o medidas ausentes producen una solicitud de información o revisión, nunca un precio inventado."},
+  {id:"M-A07", st:["D3"], t:"Consistencia entre canales", d:"La misma configuración produce el mismo precio en el agente, la web y el documento. Qstomizer no duplica descuentos ni recargos."}
+];
+
+const DEPS = [
+  {id:"dep-01", t:"Acceso de colaborador a Shopify con lectura de catálogo e inventario", o:"Tecnología", date:"2026-10-06", st:"D1"},
+  {id:"dep-02", t:"api-key de Mercately, nombres del embudo y sus 12 etapas, plan y cuota mensual, configuración de MIA y workflows de n8n que tocan Mercately", o:"Tecnología", date:"2026-10-06", st:"D1"},
+  {id:"dep-03", t:"Dos o tres contactos de prueba autorizados para Mercately", o:"Tecnología", date:"2026-10-06", st:"D1"},
+  {id:"dep-04", t:"Credenciales de la API de Siigo y ambiente de pruebas", o:"Contabilidad", date:"2026-10-06", st:"D1"},
+  {id:"dep-05", t:"Repositorio, usuario en n8n, hosting de la plataforma y canal de Telegram", o:"Tecnología", date:"2026-10-06", st:"D1"},
+  {id:"dep-06", t:"Volumen mensual aproximado de solicitudes y cotizaciones", o:"Comercial", date:"2026-10-06", st:"D1"},
+  {id:"dep-07", t:"Calculadora de descuentos original, modelo de cotización, plantillas de Canva y de Google Slides, PDF base", o:"Comercial y Tecnología", date:"2026-10-07", st:"D1"},
+  {id:"dep-08", t:"10 conversaciones históricas anonimizadas y 5 cotizaciones reales", o:"Tecnología", date:"2026-10-07", st:"D1"},
+  {id:"dep-09", t:"Carpeta del expediente en Drive y formulario de facturación con su hoja de respuestas", o:"Brayan", date:"2026-10-07", st:"D2"},
+  {id:"dep-10", t:"Llaves de integración de Bold y ambiente de pruebas", o:"Brayan y contabilidad", date:"2026-10-13", st:"D2"},
+  {id:"dep-11", t:"Lista de proveedores, número de WhatsApp de cada uno y formato actual del pedido", o:"Operación", date:"2026-10-13", st:"D2"},
+  {id:"dep-12", t:"Dos o tres clientes reales para la lista de permitidos", o:"Comercial", date:"2026-10-16", st:"D2"},
+  {id:"dep-13", t:"Procedimiento de contabilidad para emitir facturas reales a DIAN durante el piloto", o:"Contabilidad", date:"2026-10-16", st:"D2"},
+  {id:"dep-15", t:"Comercial y contabilidad disponibles unas dos horas por día para las pruebas de aceptación", o:"Brayan", date:"2026-10-22", st:"D2"},
+  {id:"dep-14", t:"Tablas de marcación M01 a M09 con nombre, responsable, versión, costo o venta, unidad, condiciones y restricciones", o:"Operación y producción", date:"2026-10-23", st:"D3"}
+];
+
+const DECS = [
+  {id:"dec-01", t:"IVA y redondeo por concepto", o:"Contabilidad", date:"2026-10-07", st:"D1"},
+  {id:"dec-02", t:"Transporte: base del umbral de 2.000.000 y municipios cubiertos de Sabana", o:"Brayan", date:"2026-10-07", st:"D1"},
+  {id:"dec-03", t:"Vigencia: calendario de festivos y hora de vencimiento", o:"Brayan", date:"2026-10-07", st:"D1"},
+  {id:"dec-04", t:"Etapa que dispara la cotización y etapas destino en el embudo", o:"Tecnología y comercial", date:"2026-10-07", st:"D1"},
+  {id:"dec-05", t:"Siigo como registro formal y Google Slides como documento al cliente", o:"Brayan", date:"2026-10-07", st:"D1"},
+  {id:"dec-06", t:"Pagos: métodos automatizados, anticipo, vencimiento, devoluciones y cobro de kits", o:"Brayan y contabilidad", date:"2026-10-09", st:"D2"},
+  {id:"dec-07", t:"Factura: evento de emisión y transporte facturado después", o:"Contabilidad", date:"2026-10-09", st:"D2"},
+  {id:"dec-08", t:"Reserva de stock y concurrencia antes del pago", o:"Brayan y operación", date:"2026-10-13", st:"D2"},
+  {id:"dec-09", t:"Pedido al proveedor: canal, confirmación y rechazo", o:"Operación", date:"2026-10-13", st:"D2"},
+  {id:"dec-10", t:"Kits y custom, marcación, Qstomizer, documentos y costeo", o:"Brayan y producción", date:"2026-10-23", st:"D3"}
+];
+
+const FLOW = [
+  {n:1, st:"D1", t:"Llega la solicitud", d:"El cliente escribe por WhatsApp y la negociación vive en Mercately.", sys:["Mercately","MIA"]},
+  {n:2, st:"D1", t:"Se estructura", d:"Producto, variante, cantidad, ciudad y fecha requerida, extraídos de la conversación.", sys:["Gemini"]},
+  {n:3, st:"D1", t:"Se calcula", d:"Precio de Shopify, mínimo, stock, descuento por monto, IVA, transporte y vigencia.", sys:["Shopify","Motor"]},
+  {n:4, st:"D1", t:"Se documenta", d:"Cotización registrada en Siigo y PDF con el formato de Tu merch.", sys:["Siigo","Slides"]},
+  {n:5, st:"D2", t:"Se revisa y se envía", d:"El asesor aprueba y la plantilla de WhatsApp lleva el PDF al cliente.", sys:["Mercately"]},
+  {n:6, st:"D2", t:"Se cobra", d:"Confirmación idempotente o enlace Bold, con el stock revalidado.", sys:["Bold","Rappipay"]},
+  {n:7, st:"D2", t:"Se pide al proveedor", d:"Orden con el SKU del proveedor y registro de su respuesta.", sys:["WhatsApp"]},
+  {n:8, st:"D2", t:"Se factura", d:"Borrador en Siigo, conformidad del cliente y emisión a DIAN.", sys:["Siigo","Drive"]},
+  {n:9, st:"D3", t:"Se marca y se mide", d:"Marcación como Copilot del asesor, costeo por pedido e indicadores.", sys:["Tablas M01–M09","Reporte"]}
+];
+
+const OUT = [
+  {t:"Entrada por correo o web", d:"El asesor crea la negociación en Mercately y la solicitud entra al mismo flujo, con el mismo precio."},
+  {t:"Verificación de stock en las API de proveedores", d:"Disponible como opcional del mes 2 para los dos proveedores que exponen API."},
+  {t:"Selección automática del proveedor", d:"La asignación sigue la operación de Tu merch."},
+  {t:"Cotizador web o Qstomizer como canal de venta", d:"El checkout está apagado por decisión comercial. Qstomizer solo se evalúa en el mes 2."},
+  {t:"Previsualización del logo sobre el producto", d:"Construcción aparte de render de imagen, no reutiliza el motor de precio."},
+  {t:"Fase 3: integración de proveedores", d:"Los 890 proveedores quedan para una fase posterior."}
+];
+
+const TL_LANES = [
+  {lab:"Arranque", sub:"Respuesta y accesos", bars:[{s:"2026-10-01", e:"2026-10-06", st:"K", txt:"Arranque", tone:"d0"}]},
+  {lab:"D1", sub:"Cotizador en sombra", bars:[{s:"2026-10-07", e:"2026-10-14", st:"D1", txt:"D1 · construcción", tone:"d1"}]},
+  {lab:"D2", sub:"Cierre digital", bars:[{s:"2026-10-15", e:"2026-10-21", st:"D2", txt:"D2 · construcción", tone:"d2"},{s:"2026-10-22", e:"2026-10-28", st:"D2", txt:"Piloto", tone:"d2", hatch:true}]},
+  {lab:"Soporte Fase 1", sub:"30 días", bars:[{s:"2026-10-30", e:"2026-11-27", st:"D2", txt:"Soporte de la Fase 1", ghost:true}]},
+  {lab:"D3 · mes 2", sub:"Sujeto a aprobación", bars:[{s:"2026-11-03", e:"2026-11-27", st:"D3", txt:"D3 · marcación, costeo y métricas", tone:"d3"}]},
+  {lab:"Soporte Fase 2", sub:"30 días", bars:[{s:"2026-11-30", e:"2026-12-30", st:"D3", txt:"Soporte de la Fase 2", ghost:true}]}
+];
+const MILESTONES = [
+  {d:"2026-10-01", txt:"Propuesta", sm:"1 oct", pos:"up", tone:"d0"},
+  {d:"2026-10-05", txt:"Kickoff", sm:"5 oct", pos:"dn", tone:"d0"},
+  {d:"2026-10-14", txt:"D1 sombra", sm:"14 oct", pos:"up", tone:"d1"},
+  {d:"2026-10-21", txt:"D2", sm:"21 oct", pos:"dn", tone:"d2"},
+  {d:"2026-10-23", txt:"Tablas", sm:"23 oct", pos:"up", tone:"d3"},
+  {d:"2026-10-29", txt:"Producción", sm:"29 oct", pos:"dn", tone:"d2"},
+  {d:"2026-11-27", txt:"Entrega D3", sm:"27 nov", pos:"up", tone:"d3"}
+];
+const HOLIDAYS = ["2026-10-12","2026-11-02","2026-11-16"];
+const TL_START = "2026-09-28", TL_END = "2026-12-31";
+const GO_LIVE = "2026-10-29";
+
+const STATUS = {
+  pendiente:{label:"Pendiente"}, en_curso:{label:"En curso"}, cumplido:{label:"Cumplido"}, bloqueado:{label:"Bloqueado"}
+};
+const ORDER = ["pendiente","en_curso","cumplido","bloqueado"];
+
+/* ===================== Utilidades ===================== */
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const DAY = 86400000;
+const toUTC = s => { const [y,m,d] = s.split("-").map(Number); return Date.UTC(y,m-1,d); };
+const todayStr = (()=>{ try { return new Intl.DateTimeFormat("en-CA",{timeZone:"America/Bogota",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date()); } catch(e){ return new Date().toISOString().slice(0,10); } })();
+const days = (a,b) => Math.round((toUTC(b)-toUTC(a))/DAY);
+const fmtShort = s => { const [y,m,d] = s.split("-").map(Number); return d + " " + ["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"][m-1]; };
+const fmtWhen = iso => { try { return new Intl.DateTimeFormat("es-CO",{day:"numeric",month:"short",hour:"numeric",minute:"2-digit",timeZone:"America/Bogota"}).format(new Date(iso)); } catch(e){ return ""; } };
+const stageById = id => STAGES.find(s => s.id === id);
+const toneOf = id => (stageById(id)||{}).tone || "d0";
+
+/* ===================== Estado ===================== */
+const S = { server:{}, opt:{}, db:null, user:null, uid:null, canWrite:false, live:false, tab:null, cf:"all", cs:"all", df:"all", menuFor:null };
+const cur = id => S.opt[id] || S.server[id] || null;
+const st = id => { const v = cur(id); return v && STATUS[v.s] ? v.s : "pendiente"; };
+
+function pill(id){
+  const s = st(id), lab = STATUS[s].label;
+  if (S.canWrite) return `<button type="button" class="pill s-${s}" data-sid="${esc(id)}" aria-haspopup="menu" aria-label="Estado: ${lab}. Cambiar"><span class="dot"></span>${lab}</button>`;
+  return `<span class="pill s-${s}"><span class="dot"></span>${lab}</span>`;
+}
+function meta(id){
+  const v = cur(id); if (!v || !v.at) return "";
+  const who = v.by ? `<span data-uid="${esc(v.by)}">…</span>` : "";
+  return `<span>Actualizado${who ? " por " + who : ""} · ${esc(fmtWhen(v.at))}</span>`;
+}
+function stageItems(sg){ return sg.deliverables.map(x=>x.id).concat(sg.criteria.map(x=>x.id)); }
+function progress(ids){ const done = ids.filter(id => st(id)==="cumplido").length; return {done, total:ids.length, pct: ids.length ? Math.round(done*100/ids.length) : 0}; }
+
+/* ===================== Render ===================== */
+function renderHero(){
+  const left = days(todayStr, GO_LIVE);
+  $("#countdown").textContent = left > 1 ? `jueves · faltan ${left} días` : left === 1 ? "jueves · mañana" : left === 0 ? "jueves · hoy" : "jueves · en producción";
+  const all = STAGES.flatMap(stageItems);
+  const p = progress(all);
+  $("#overall").innerHTML = `${p.pct} %<small>${p.done} de ${p.total} entregables y criterios</small>`;
+  $("#strip").innerHTML = STAGES.map(sg => {
+    const q = progress(stageItems(sg));
+    return `<div class="ps"><div class="row"><span><b class="c-${sg.tone}">${sg.code}</b> ${esc(sg.short)}</span><span class="num">${q.done}/${q.total}</span></div><div class="bar" role="progressbar" aria-label="${esc(sg.name)}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${q.pct}"><span class="bg-${sg.tone}" style="width:${q.pct}%"></span></div></div>`;
+  }).join("");
+}
+
+function renderFlow(){
+  $("#flowIndex").innerHTML = FLOW.map(f => `<span class="bg-${toneOf(f.st)}"></span>`).join("");
+  $("#flow").innerHTML = FLOW.map(f => {
+    const t = toneOf(f.st);
+    return `<button type="button" class="step" data-goto="${f.st}" aria-label="Paso ${f.n}: ${esc(f.t)}. Ver ${f.st}">
+      <span class="top"><span class="n bg-${t}">${f.n}</span><span class="dtag soft-${t}">${f.st}</span></span>
+      <h3>${esc(f.t)}</h3><p>${esc(f.d)}</p>
+      <span class="sys">${f.sys.map(s=>`<span>${esc(s)}</span>`).join("")}</span>
+    </button>`;
+  }).join("");
+}
+
+function renderTimeline(){
+  const total = days(TL_START, TL_END) + 1;
+  const x = d => (days(TL_START, d) / total) * 100;
+  const w = (a,b) => ((days(a,b)+1) / total) * 100;
+  let ticks = "", lines = "";
+  for (let d = toUTC(TL_START); d <= toUTC(TL_END); d += 7*DAY){
+    const s = new Date(d).toISOString().slice(0,10);
+    const px = x(s);
+    ticks += `<span class="tick" style="left:${px}%">${fmtShort(s)}</span>`;
+    lines += `<span class="wk" style="left:${px}%"></span>`;
+  }
+  HOLIDAYS.forEach(h => { lines += `<span class="hol" style="left:${x(h)+ (50/total)}%" title="Festivo ${fmtShort(h)}"></span>`; });
+  if (todayStr >= TL_START && todayStr <= TL_END) lines += `<span class="today" style="left:${x(todayStr) + 50/total}%"><span>Hoy</span></span>`;
+  const ms = MILESTONES.map(m => {
+    const px = x(m.d) + 50/total;
+    return `<span class="msk bg-${m.tone}" style="left:${px}%"></span><span class="msl ${m.pos}" style="left:${px}%">${esc(m.txt)}<small>${esc(m.sm)}</small></span>`;
+  }).join("");
+  const lanes = TL_LANES.map(l => `<div class="tl-row"><div class="tl-lab"><b>${esc(l.lab)}</b>${esc(l.sub)}</div><div class="tl-track">${
+    l.bars.map(b => `<button type="button" class="tl-bar ${b.ghost?"ghost":"bg-"+b.tone} ${b.hatch?"hatch":""}" data-goto="${b.st}" style="left:${x(b.s)}%;width:${w(b.s,b.e)}%" title="${esc(b.txt)}: ${fmtShort(b.s)} – ${fmtShort(b.e)}">${esc(b.txt)}</button>`).join("")
+  }</div></div>`).join("");
+  $("#tl").innerHTML = `<div class="tl-grid">${lines}</div>
+    <div class="tl-row axis"><div class="tl-lab"></div><div class="tl-track">${ticks}</div></div>
+    <div class="tl-row ms"><div class="tl-lab"><b>Hitos</b>Fechas clave</div><div class="tl-track">${ms}</div></div>
+    ${lanes}`;
+}
+
+function renderStages(){
+  $("#stages").innerHTML = STAGES.map(sg => {
+    const q = progress(stageItems(sg)), sel = sg.id === S.tab;
+    return `<button type="button" class="stage-card" role="tab" id="tab-${sg.id}" aria-controls="detail" aria-selected="${sel}" tabindex="${sel?0:-1}" data-tab="${sg.id}">
+      <span class="hd"><span class="code c-${sg.tone}">${sg.code}</span><span class="dt">${esc(sg.dates)}</span></span>
+      <span class="nm">${esc(sg.name)}</span>
+      <span class="bar"><span class="bg-${sg.tone}" style="width:${q.pct}%"></span></span>
+      <span class="pr"><span>${esc(sg.hitos)}</span><span class="num">${q.done}/${q.total}</span></span>
+    </button>`;
+  }).join("");
+}
+
+function itemRow(x, opts){
+  const s = st(x.id);
+  let derived = "";
+  if (x.cases){ const n = x.cases.filter(c => st(c)==="cumplido").length; derived = `<span class="derived"><b class="num">${n}/${x.cases.length}</b> casos cumplidos</span>`; }
+  const m = meta(x.id);
+  return `<li class="item ${s==="bloqueado"?"is-blk":""} ${s==="cumplido"?"is-ok":""}">
+    <span class="t">${esc(x.t)}</span>
+    <span class="side">${pill(x.id)}${x.w ? `<span class="when-tag">${esc(x.w)}</span>` : ""}</span>
+    ${x.d ? `<span class="d">${esc(x.d)}</span>` : ""}
+    ${(derived||m) ? `<span class="m">${derived}${m}</span>` : ""}
+  </li>`;
+}
+
+function renderDetail(){
+  const sg = stageById(S.tab); if (!sg) return;
+  const t = sg.tone;
+  $("#detail").setAttribute("aria-labelledby","tab-"+sg.id);
+  const deps = sg.deps.map(id => DEPS.find(d=>d.id===id)).filter(Boolean);
+  const casesHtml = sg.cases.length ? `<div class="sub-h">Casos que cubre</div><div class="case-chips">${
+      sg.cases.map(c => `<button type="button" class="case-chip" data-case="${c}"><i class="i-${st(c)}"></i>${c}</button>`).join("")
+    }</div>` : "";
+  const depsHtml = deps.length ? `<div class="sub-h">Depende de Tu merch</div><ul class="list">${
+      deps.map(d => itemRow({id:d.id, t:d.t, d:`${d.o} · ${fmtShort(d.date)}`})).join("")
+    }</ul>` : "";
+  $("#detail").innerHTML = `
+    <div class="detail-head">
+      <span class="big c-${t}">${sg.code}</span>
+      <div>
+        <h3>${esc(sg.name)}</h3>
+        <div class="when"><span class="dtag soft-${t}">${esc(sg.hitos)}</span>${sg.when.map(w=>`<span class="chip">${esc(w)}</span>`).join("")}</div>
+      </div>
+      <p class="obj">${sg.objective}</p>
+    </div>
+    <div class="detail-body">
+      <div>
+        <div class="col-h"><h4>Entregables</h4><span class="num">${progress(sg.deliverables.map(x=>x.id)).done} de ${sg.deliverables.length} cumplidos</span></div>
+        <ul class="list">${sg.deliverables.map(x=>itemRow(x)).join("")}</ul>
+      </div>
+      <div>
+        <div class="col-h"><h4>Criterios de aceptación</h4><span class="num">${progress(sg.criteria.map(x=>x.id)).done} de ${sg.criteria.length}</span></div>
+        <ul class="list">${sg.criteria.map(x=>itemRow(x)).join("")}</ul>
+        ${sg.prereq ? `<div class="prereq"><b>Prerrequisito.</b> ${sg.prereq}</div>` : ""}
+        ${casesHtml}
+        ${depsHtml}
+      </div>
+    </div>`;
+}
+
+function renderCaseFilters(){
+  const f1 = [["all","Todos"],["D1","D1"],["D2","D2"],["D3","D3"]].map(([k,l]) => `<button type="button" class="fbtn" data-cf="${k}" aria-pressed="${S.cf===k}">${l}</button>`).join("");
+  const f2 = [["all","Cualquier estado"],["pendiente","Pendientes"],["cumplido","Cumplidos"],["bloqueado","Bloqueados"]].map(([k,l]) => `<button type="button" class="fbtn" data-cs="${k}" aria-pressed="${S.cs===k}">${l}</button>`).join("");
+  $("#caseFilters").innerHTML = f1 + `<span class="fsep" aria-hidden="true"></span>` + f2;
+}
+function renderCases(){
+  renderCaseFilters();
+  const list = CASES.filter(c => (S.cf==="all" || c.st.includes(S.cf)) && (S.cs==="all" || st(c.id)===S.cs));
+  $("#cases").innerHTML = list.length ? list.map(c => {
+    const t = toneOf(c.st[0]);
+    return `<article class="case" id="case-${c.id}">
+      <div class="hd"><span class="code c-${t}">${c.id}</span><span style="display:flex;gap:4px">${c.st.map(s=>`<span class="dtag soft-${toneOf(s)}">${s}</span>`).join("")}</span></div>
+      <h3>${esc(c.t)}</h3><p>${esc(c.d)}</p>
+      <div class="ft">${pill(c.id)}<span class="m" style="font-size:12px;color:var(--ink-3)">${meta(c.id)}</span></div>
+    </article>`;
+  }).join("") : "";
+  if (!list.length) $("#cases").innerHTML = `<div class="empty" style="grid-column:1/-1">Ningún caso coincide con estos filtros.</div>`;
+}
+
+function depRows(rows){
+  const f = rows.filter(r => S.df==="all" || r.st===S.df);
+  if (!f.length) return `<tr><td colspan="5" style="color:var(--ink-2)">Nada pendiente para este despliegue.</td></tr>`;
+  return f.map(r => {
+    const s = st(r.id);
+    const overdue = s !== "cumplido" && todayStr > r.date;
+    return `<tr class="${s==="bloqueado"?"is-blk":""}">
+      <td>${pill(r.id)}</td>
+      <td class="what">${esc(r.t)}${meta(r.id) ? `<span style="display:block;font-size:12px;color:var(--ink-3);margin-top:4px">${meta(r.id)}</span>` : ""}</td>
+      <td>${esc(r.o)}</td>
+      <td class="date num">${fmtShort(r.date)}${overdue ? `<span class="od">Vencida</span>` : ""}</td>
+      <td><span class="dtag soft-${toneOf(r.st)}">${r.st}</span></td>
+    </tr>`;
+  }).join("");
+}
+function renderDeps(){
+  $("#depFilters").innerHTML = [["all","Todo"],["D1","Para D1"],["D2","Para D2"],["D3","Para D3"]].map(([k,l]) => `<button type="button" class="fbtn" data-df="${k}" aria-pressed="${S.df===k}">${l}</button>`).join("");
+  $("#deps").innerHTML = depRows(DEPS);
+  $("#decs").innerHTML = depRows(DECS);
+}
+
+function renderOut(){
+  $("#out").innerHTML = OUT.map(o => `<div><b>${esc(o.t)}</b><p>${esc(o.d)}</p></div>`).join("");
+}
+
+function fillNames(){
+  const els = Array.from(document.querySelectorAll("[data-uid]"));
+  if (!els.length) return;
+  const ids = Array.from(new Set(els.map(e => e.getAttribute("data-uid")).filter(Boolean)));
+  if (!S.user || !ids.length){ els.forEach(e => e.textContent = "alguien del equipo"); return; }
+  S.user.profiles(ids).then(ps => {
+    els.forEach(e => { const p = ps[e.getAttribute("data-uid")]; e.textContent = (p && p.name) || "alguien del equipo"; });
+  }).catch(() => els.forEach(e => e.textContent = "alguien del equipo"));
+}
+
+function renderAll(){
+  renderHero(); renderStages(); renderDetail(); renderCases(); renderDeps(); fillNames();
+}
+
+function setSync(state){
+  const el = $("#sync"), tx = $("#syncText");
+  el.dataset.s = state;
+  const map = {
+    wait:'Conectando<span class="long"> el estado compartido</span>',
+    live:'Estado en vivo<span class="long"> · puedes actualizarlo</span>',
+    ro:'Estado en vivo<span class="long"> · solo lectura</span>',
+    off:'Sin estado compartido<span class="long"> · vista de referencia</span>'
+  };
+  tx.innerHTML = map[state] || map.wait;
+}
+
+/* ===================== Menú de estado ===================== */
+const menu = $("#menu");
+function openMenu(btn){
+  const id = btn.getAttribute("data-sid"); S.menuFor = id;
+  const curS = st(id);
+  menu.innerHTML = `<div class="mh">Cambiar estado</div>` + ORDER.map(k => `<button type="button" role="menuitemradio" aria-checked="${k===curS}" data-set="${k}"><i class="i-${k}"></i>${STATUS[k].label}</button>`).join("");
+  menu.hidden = false;
+  const r = btn.getBoundingClientRect();
+  const mw = menu.offsetWidth, mh = menu.offsetHeight;
+  let left = r.right + window.scrollX - mw; left = Math.max(8 + window.scrollX, Math.min(left, window.scrollX + document.documentElement.clientWidth - mw - 8));
+  let top = r.bottom + window.scrollY + 6;
+  if (r.bottom + mh + 12 > window.innerHeight && r.top - mh - 6 > 0) top = r.top + window.scrollY - mh - 6;
+  menu.style.left = left + "px"; menu.style.top = top + "px";
+  const first = menu.querySelector('[aria-checked="true"]') || menu.querySelector("button[data-set]");
+  first && first.focus();
+}
+function closeMenu(focusBack){
+  if (menu.hidden) return;
+  const id = S.menuFor; menu.hidden = true; S.menuFor = null;
+  if (focusBack && id){ const b = document.querySelector(`[data-sid="${CSS.escape(id)}"]`); b && b.focus(); }
+}
+
+/* ===================== Escrituras ===================== */
+const inflight = {}, queued = {};
+function setStatus(id, s){
+  if (st(id) === s) return;
+  const body = { s, by: S.uid || null, at: new Date().toISOString() };
+  S.opt[id] = body; renderAll(); write(id, body);
+}
+async function write(id, body){
+  if (!S.db) return;
+  if (inflight[id]){ queued[id] = body; return; }
+  inflight[id] = true;
+  try { await S.db.collection("estado").doc(id).set(body); }
+  catch(e){
+    delete S.opt[id];
+    const code = e && e.code;
+    if (code === "invalid_argument" || code === "not_granted"){ S.canWrite = false; setSync("ro"); toast("Tu acceso es de solo lectura. El estado no cambió."); }
+    else if (code === "quota_exceeded"){ toast("El almacenamiento del roadmap está lleno. El estado no cambió."); }
+    else if (code === "revoked"){ S.canWrite = false; setSync("off"); }
+    else { toast("No se pudo guardar el cambio. Intenta de nuevo en un momento."); }
+    renderAll();
+  } finally {
+    inflight[id] = false;
+    if (queued[id]){ const b = queued[id]; delete queued[id]; write(id, b); }
+  }
+}
+
+let toastT = null;
+function toast(msg){ const t = $("#toast"); t.textContent = msg; t.hidden = false; clearTimeout(toastT); toastT = setTimeout(()=>{ t.hidden = true; }, 4200); }
+
+/* ===================== Navegación ===================== */
+function selectTab(id, scroll){
+  if (!stageById(id)) return;
+  S.tab = id;
+  try { localStorage.setItem("tm-roadmap-tab", id); } catch(e){}
+  renderStages(); renderDetail(); fillNames();
+  if (scroll) document.getElementById("entregables").scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block:"start"});
+}
+function defaultTab(){
+  const h = (location.hash||"").replace("#","");
+  if (stageById(h)) return h;
+  try { const v = localStorage.getItem("tm-roadmap-tab"); if (stageById(v)) return v; } catch(e){}
+  if (todayStr < "2026-10-07") return "K";
+  if (todayStr <= "2026-10-14") return "D1";
+  if (todayStr <= "2026-10-29") return "D2";
+  return "D3";
+}
+
+document.addEventListener("click", e => {
+  const t = e.target;
+  const sid = t.closest("[data-sid]");
+  if (sid){ e.preventDefault(); if (S.menuFor === sid.getAttribute("data-sid") && !menu.hidden) closeMenu(); else openMenu(sid); return; }
+  const set = t.closest("[data-set]");
+  if (set && S.menuFor){ const id = S.menuFor; closeMenu(true); setStatus(id, set.getAttribute("data-set")); return; }
+  if (!menu.hidden && !t.closest("#menu")) closeMenu();
+  const tab = t.closest("[data-tab]"); if (tab){ selectTab(tab.getAttribute("data-tab"), false); return; }
+  const go = t.closest("[data-goto]"); if (go){ selectTab(go.getAttribute("data-goto"), true); return; }
+  const cf = t.closest("[data-cf]"); if (cf){ S.cf = cf.getAttribute("data-cf"); renderCases(); fillNames(); return; }
+  const cs = t.closest("[data-cs]"); if (cs){ S.cs = cs.getAttribute("data-cs"); renderCases(); fillNames(); return; }
+  const df = t.closest("[data-df]"); if (df){ S.df = df.getAttribute("data-df"); renderDeps(); fillNames(); return; }
+  const cc = t.closest("[data-case]");
+  if (cc){
+    const id = cc.getAttribute("data-case");
+    if (S.cf !== "all" || S.cs !== "all"){ S.cf = "all"; S.cs = "all"; renderCases(); fillNames(); }
+    const el = document.getElementById("case-"+id);
+    if (el){ el.scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block:"center"}); el.classList.remove("flash"); void el.offsetWidth; el.classList.add("flash"); }
+    return;
+  }
+  if (t.closest("#mail")){
+    const txt = "hola@luuplab.com";
+    try { navigator.clipboard.writeText(txt).then(()=>toast("Correo copiado"), ()=>selectMail()); } catch(err){ selectMail(); }
+  }
+});
+function selectMail(){ const r = document.createRange(); r.selectNodeContents($("#mail")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); toast("Correo seleccionado: cópialo con tu teclado"); }
+
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape" && !menu.hidden){ closeMenu(true); return; }
+  if (!menu.hidden && (e.key === "ArrowDown" || e.key === "ArrowUp")){
+    e.preventDefault();
+    const items = Array.from(menu.querySelectorAll("button[data-set]"));
+    const i = items.indexOf(document.activeElement);
+    const n = e.key === "ArrowDown" ? (i+1) % items.length : (i-1+items.length) % items.length;
+    items[n].focus(); return;
+  }
+  const tab = e.target.closest && e.target.closest('[role="tab"]');
+  if (tab && (e.key === "ArrowRight" || e.key === "ArrowLeft")){
+    const ids = STAGES.map(s=>s.id); const i = ids.indexOf(S.tab);
+    const n = e.key === "ArrowRight" ? (i+1)%ids.length : (i-1+ids.length)%ids.length;
+    selectTab(ids[n], false); const b = document.getElementById("tab-"+ids[n]); b && b.focus();
+  }
+});
+window.addEventListener("resize", () => closeMenu());
+
+/* ===================== Arranque ===================== */
+S.tab = defaultTab();
+renderFlow(); renderTimeline(); renderOut(); renderAll();
+
+(async function boot(){
+  const c = window.claude;
+  if (!c || typeof c.use !== "function"){ setSync("off"); return; }
+  let db = null, user = null;
+  try { [db, user] = await Promise.all([c.use("db"), c.use("user")]); } catch(e){}
+  S.user = user;
+  if (!db){ setSync("off"); renderAll(); return; }
+  S.db = db;
+  let can = null;
+  if (user){
+    try { S.uid = await user.id(); } catch(e){}
+    try { can = await user.can("data.write"); } catch(e){ can = null; }
+  }
+  S.canWrite = can === null ? true : !!can;
+  db.collection("estado").onSnapshot(snap => {
+    const m = {};
+    snap.docs.forEach(d => { if (d.exists){ const v = d.data(); if (v && STATUS[v.s]) m[d.id] = v; } });
+    S.server = m;
+    Object.keys(S.opt).forEach(k => { if (m[k] && m[k].s === S.opt[k].s && m[k].at === S.opt[k].at) delete S.opt[k]; });
+    S.live = true; setSync(S.canWrite ? "live" : "ro"); renderAll();
+  }, err => {
+    if (err && err.code === "revoked") S.canWrite = false;
+    setSync("off"); renderAll();
+  });
+})();
+})();
+</script>
+</body>
+</html>
