@@ -19,6 +19,7 @@
 
 ### Registro de aprendizajes
 
+- **2026-10-13 — Fuentes del cliente en Drive vía Composio:** se descartó un repositorio aparte y el VPS de producción; las fuentes viven en una carpeta restringida de Drive y el stack las lee por Composio, con la clave solo en el `.env` del VPS. **Por qué importa:** nunca copies una fuente al repositorio; y Composio es subencargado bajo la Ley 1581, así que no cargues insumos con datos personales hasta que Tu Merch lo apruebe.
 <!-- Agrega nuevas entradas arriba de esta línea. -->
 - **2026-10-13 — El repositorio es público:** la base decía «repositorio privado confirmado» y el repositorio `Ramirezgon19/tu-merch` es público; se subieron propuesta, roadmap y guía bajo NDA dando por cierto el documento. **Por qué importa:** la visibilidad se verifica contra GitHub (`gh api … --jq .visibility`), nunca contra lo que diga la documentación; regla 13 de prohibiciones.
 - **2026-10-13 — El roadmap manda; las fuentes del cliente complementan:** el paquete fue insumo del roadmap, pero la guía v2 es del 08/10, posterior al roadmap del 01/10, y trae detalle que el roadmap no pudo incluir. **Por qué importa:** no asumas que todo lo del cliente «ya está en el roadmap»; úsalo para el detalle y regístralo si contradice.
@@ -101,7 +102,7 @@ Los errores son oportunidades de aprendizaje. Cuando algo falla:
 ## Autoridad de las fuentes, en orden
 
 1. **Roadmap aprobado del 01/10/2026** (`docs/requisitos/roadmap-aprobado-20261001.md`): **la fuente de la verdad.** Es lo que Tu Merch aprobó: alcance, entregables y criterios por etapa K/D1/D2/D3, los 19 casos de aceptación, las dependencias `dep-01`–`dep-15`, las decisiones `dec-01`–`dec-10` y las exclusiones. Gana ante cualquier contradicción. La propuesta del mismo día lo respalda en honorarios y condiciones.
-2. **ADR de `docs/decisiones/`**: deciden lo que el roadmap dejó abierto. ADR-001 trata el cronograma; ADR-002, el despliegue; ADR-003, el almacenamiento de fuentes del cliente.
+2. **ADR de `docs/decisiones/`**: deciden lo que el roadmap dejó abierto. ADR-001 trata el cronograma; ADR-002, el despliegue; ADR-003, el almacenamiento de fuentes del cliente en Drive vía Composio.
 3. **Fuentes complementarias del cliente**: el paquete de estimación v1 (funcional del 19/09 y anexo técnico del 24/09) y la guía técnica de integración v2 del 08/10. Sirven para el **detalle que el roadmap no cubre** —contratos de API, metacampos, convivencia con MIA, contactos QA— y nada más. El paquete fue insumo del roadmap; la guía v2 es posterior a él y por eso trae información nueva que el roadmap no pudo incluir. Si cualquiera de las dos contradice el roadmap, **no se aplica**: se registra con `directives/registrar_decision.md`. Si amplía el alcance, es una solicitud de cambio, no código.
 4. **Información nueva del cliente durante la ejecución** —documentos, correos, mensajes del grupo de WhatsApp— entra solo por `directives/incorporar_fuente.md`, que decide dónde se organiza y qué relevancia tiene. Hasta pasar por ahí, no es fuente.
 5. **`docs/requisitos/base-proyecto.md`**: síntesis de todo lo anterior para trabajar. Si contradice al roadmap, gana el roadmap y la base se corrige.
@@ -147,7 +148,7 @@ Invariantes que valen en todo el sistema:
 10. Tratar la etiqueta `Desactivar MIA` como veto o como permiso: su semántica está sin resolver (P0-07).
 11. Enviar a clientes fuera de horario: L–V 08:00–18:00 y sábado 08:00–13:00, `America/Bogota`. Fuera de eso, a la cola.
 12. Dependencias en el host del VPS, rutas absolutas del VPS o imágenes `latest`. Rompe la migración (ADR-002).
-13. **Subir al repositorio cualquier documento del cliente, su transcripción, precios, honorarios o datos de personas de Tu Merch mientras el repositorio sea público.** Verifica la visibilidad con `gh api repos/Ramirezgon19/tu-merch --jq .visibility` antes de subir algo que venga del cliente; no confíes en lo que diga un documento. Hasta que ADR-003 decida el almacenamiento, el material del cliente vive solo en `.tmp/`.
+13. **Subir al repositorio cualquier documento del cliente, su transcripción, precios, honorarios o datos de personas de Tu Merch mientras el repositorio sea público.** Verifica la visibilidad con `gh api repos/Ramirezgon19/tu-merch --jq .visibility` antes de subir algo que venga del cliente; no confíes en lo que diga un documento. El material del cliente vive en la carpeta de Drive del proyecto y se accede por Composio (ADR-003); al repositorio solo llegan citas por fecha, remitente y tipo.
 
 ## Cómo trabajar
 

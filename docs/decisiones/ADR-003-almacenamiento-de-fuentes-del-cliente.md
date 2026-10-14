@@ -1,6 +1,6 @@
 # ADR-003 · Dónde se almacenan las fuentes y los insumos del cliente
 
-**Estado:** propuesta. Requiere decisión de Alejo y David, y confirmación de Miguel sobre el NDA.
+**Estado:** decidido por Alejo el 13/10/2026 en la pregunta 2 (almacenamiento): Drive a través de Composio, conectado al contenedor. La pregunta 1 (visibilidad del repositorio) sigue pendiente de David. Requiere confirmación de Miguel sobre el NDA.
 **Fecha:** 13 de octubre de 2026 · **Propone:** Alejo · **Decide:** Alejo y David · **Consulta:** Miguel
 **Relacionado:** ADR-002 (despliegue); `directives/incorporar_fuente.md`; prohibición 13 de `CLAUDE.md`
 
@@ -31,19 +31,30 @@ Requisitos: que los agentes (Claude Code, Codex, Gemini, sesiones en la nube) pu
 | **D. Drive a través de Composio** | Por la integración de Composio | Agrega un tercero que procesa documentos bajo NDA y datos personales; habría que declararlo al cliente (Ley 1581 de 2012) |
 | **E. Volumen restringido en el VPS** | Solo con SSH al servidor de producción | Amplía el acceso a producción para leer documentos; si se compromete n8n, se compromete todo |
 
-**Propuesta:** **B** para documentos y transcripciones, y para los insumos con datos personales, anonimización antes de cualquier repositorio y el original en el mismo repo privado de fuentes con acceso solo para quienes lo necesiten. **D se descarta** por el intermediario adicional; **E se descarta** por ampliar el acceso a producción. **C** queda como respaldo de lo que el cliente comparte por Drive, no como lugar de trabajo.
+**Decisión (Alejo, 13/10/2026): opción D, Drive a través de Composio, conectado al stack del contenedor.** Se descarta B porque no se quiere mantener un segundo repositorio, y E porque mete los documentos en el servidor de producción.
 
-El registro de fuentes (fecha, remitente, tipo, huella del archivo, ubicación) vive en el repo de fuentes, junto a lo que describe.
+Cómo se implementa:
 
-## Reglas mientras no se decida
+- **Drive es el almacén** de originales, transcripciones e insumos del cliente, en una carpeta del proyecto de acceso restringido. El repositorio no guarda nada de eso.
+- **Composio es el único puente**, configurado en el stack de ADR-002: la clave de Composio vive solo en el `.env` del VPS (`COMPOSIO_API_KEY`), nunca en el repositorio ni en imágenes. La conexión con Google se autoriza contra **esa carpeta**, no contra todo el Drive de quien la autoriza, y con permisos de **solo lectura** salvo que un flujo justifique escribir.
+- **Los agentes** leen las fuentes a través de Composio, con el registro que lleva el propio Drive; ningún agente las copia al repositorio.
+- **El registro de fuentes** (fecha, remitente, tipo, huella, ubicación) vive en la misma carpeta de Drive, junto a lo que describe.
+
+Consecuencias que hay que atender, porque la decisión las acepta:
+
+- **Composio pasa a ser un tercero que procesa información bajo NDA y datos personales.** Bajo la Ley 1581 de 2012 hay que declararlo a Tu Merch como subencargado y obtener su visto bueno; sin eso, no se cargan insumos con datos personales por esta vía.
+- **Disponibilidad:** si Composio falla o cambia sus condiciones, los agentes pierden el acceso a las fuentes. Los originales siguen en Drive, así que el respaldo es acceder a la carpeta directamente.
+- **Revocación:** al cerrar el proyecto se revoca la conexión de Composio y se rota su clave, junto con las demás credenciales del cliente (base §6.10).
+
+## Reglas vigentes
 
 - Ningún documento del cliente ni su transcripción se sube al repositorio del proyecto (prohibición 13).
-- El material nuevo se procesa en `.tmp/` con `directives/incorporar_fuente.md`.
+- El material nuevo se guarda en la carpeta de Drive del proyecto y se procesa con `directives/incorporar_fuente.md`; `.tmp/` solo para copias de trabajo temporales.
 - Issues y ADR citan las fuentes por fecha, remitente y tipo, sin copiar contenido.
 
 ## Pendiente para cerrar este ADR
 
 1. David cambia la visibilidad del repositorio a privado.
-2. Alejo y David eligen entre A y B.
-3. Miguel confirma por escrito que el almacenamiento elegido cumple el NDA.
-4. Se decide si se reescribe el historial de `main` para retirar lo que estuvo público.
+2. Crear la carpeta de Drive del proyecto con acceso restringido y conectar Composio a esa carpeta en solo lectura.
+3. Declarar Composio a Tu Merch como subencargado y obtener visto bueno; Miguel confirma que cumple el NDA.
+4. Decidir si se reescribe el historial de `main` para retirar lo que estuvo público.

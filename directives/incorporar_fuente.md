@@ -6,9 +6,9 @@
 
 ## Pasos
 
-**1. Resguardar sin exponer.** Guarda el original y su transcripción en `.tmp/fuentes/<AAAA-MM-DD>-<remitente>-<tema>/`. **Nada de esto se sube al repositorio** mientras sea público (prohibición 13) ni hasta que ADR-003 decida dónde viven las fuentes. Un mensaje de WhatsApp se trata igual que un archivo: se copia el texto literal, con fecha, hora y persona.
+**1. Resguardar sin exponer.** Guarda el original en la carpeta de Drive del proyecto, en `fuentes/<AAAA-MM-DD>-<remitente>-<tema>/`, y añade su fila al registro de esa carpeta (ADR-003). Trabaja sobre una copia en `.tmp/`. **Nada de esto se sube al repositorio** (prohibición 13). Un mensaje de WhatsApp se trata igual que un archivo: se copia el texto literal, con fecha, hora y persona.
 
-**2. Analizar el contenido.** Lee completo y escribe en `.tmp/fuentes/<…>/analisis.md`:
+**2. Analizar el contenido.** Lee completo y escribe `analisis.md` junto al original en Drive:
 - **Qué es:** documento nuevo, versión de uno existente, respuesta a una pregunta abierta, insumo de datos o instrucción operativa.
 - **Qué temas toca:** cada afirmación concreta, en una lista, con la cita literal.
 - **Qué datos personales o fiscales contiene**, para tratarlos antes de cualquier uso.
@@ -31,7 +31,7 @@ Una sola fuente suele producir varias salidas a la vez. Clasifica afirmación po
 
 **6. Dejar rastro.** Para cada salida, el issue o el ADR correspondiente cita la fuente **por fecha, remitente y tipo**, sin copiar contenido confidencial al repositorio. Si la base cambia, entrada en su historial con versión nueva. Si algo resultó sorpresivo —un supuesto que era falso, una regla que nadie había mencionado—, aprendizaje en `CLAUDE.md` replicado con `python3 execution/verificar_directivas.py --arreglar`.
 
-**Salidas.** `.tmp/fuentes/<…>/analisis.md` con la ubicación y relevancia de cada afirmación; los issues, ADR o solicitudes de cambio que correspondan; un resumen en el issue que motivó la consulta o en el grupo.
+**Salidas.** `analisis.md` en la carpeta de Drive de la fuente, con la ubicación y relevancia de cada afirmación; los issues, ADR o solicitudes de cambio que correspondan; un resumen en el issue que motivó la consulta o en el grupo.
 
 ## Casos extremos
 
