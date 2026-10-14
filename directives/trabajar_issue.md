@@ -8,7 +8,7 @@
 1. Lee el issue completo. Su **criterio de terminado** es el contrato. Si no es observable y verificable, el issue está mal escrito: coméntalo ahí y detente.
 2. Si tiene etiqueta `bloqueado-por-cliente`, revisa en `docs/requisitos/roadmap-aprobado-20261001.md` la dependencia `dep-NN` o decisión `dec-NN` que lo bloquea. Si no está resuelta, detente y dilo.
 3. Lee `docs/decisiones/` por si lo que el issue da por abierto ya está decidido, o al revés.
-4. Si el issue cita una sección de las fuentes del cliente (§NN, Anexo §N), ábrela. El paquete de estimación está en Drive, enlazado en `docs/fuentes/README.md`; la guía v2 tiene copia en `docs/arquitectura/`.
+4. El roadmap aprobado manda. Si el issue cita una sección de las fuentes complementarias del cliente (§NN, Anexo §N), ábrela para el detalle; si contradice el roadmap, aplica el roadmap y registra la contradicción. El paquete de estimación está en Drive, enlazado en `docs/fuentes/README.md`; la guía v2 tiene copia en `docs/arquitectura/`.
 5. Si toca un efecto externo, lee `cola_operaciones.md`. Si toca `infra/`, lee `despliegue_docker.md`.
 6. Busca en `execution/` si ya existe la herramienta que necesitas. Solo si no existe, créala.
 7. Escribe el plan antes de codificar: condición verificable, archivos a tocar, cómo mantienes la lógica sin dependencias de HTTP ni de n8n, pruebas que lo demuestran con el nombre del caso si aplica, evidencia que dejarás, rama. **Pide aprobación del plan** si la sesión tiene a alguien al otro lado; si trabajas sin supervisión, deja el plan como primer comentario del issue y sigue.

@@ -20,6 +20,8 @@
 ### Registro de aprendizajes
 
 <!-- Agrega nuevas entradas arriba de esta línea. -->
+- **2026-10-13 — El repositorio es público:** la base decía «repositorio privado confirmado» y el repositorio `Ramirezgon19/tu-merch` es público; se subieron propuesta, roadmap y guía bajo NDA dando por cierto el documento. **Por qué importa:** la visibilidad se verifica contra GitHub (`gh api … --jq .visibility`), nunca contra lo que diga la documentación; regla 13 de prohibiciones.
+- **2026-10-13 — El roadmap manda; las fuentes del cliente complementan:** el paquete fue insumo del roadmap, pero la guía v2 es del 08/10, posterior al roadmap del 01/10, y trae detalle que el roadmap no pudo incluir. **Por qué importa:** no asumas que todo lo del cliente «ya está en el roadmap»; úsalo para el detalle y regístralo si contradice.
 - **2026-10-13 — Tres archivos, no uno:** decir que `CLAUDE.md`, `AGENTS.md` y `GEMINI.md` «son el mismo archivo» hizo pensar que eran un solo archivo o enlaces simbólicos. Son tres archivos regulares con contenido idéntico, porque cada herramienta lee un nombre distinto. **Por qué importa:** nunca los conviertas en enlaces simbólicos (Codex y algunos entornos Windows no los siguen) y describe siempre la relación como «independientes e idénticos».
 - **2026-10-12 — GraphQL bloqueado en sesiones en la nube:** `gh pr create` y `gh pr view` fallan desde una sesión de Claude en la nube porque usan GraphQL; la API REST (`gh api repos/{owner}/{repo}/pulls`) funciona. En Claude Code o Codex locales, con credenciales propias, `gh pr create` sí funciona. **Por qué importa:** usa `execution/crear_pr.py` o la API REST directa desde la nube; no insistas con el comando de alto nivel.
 - **2026-10-12 — El clon de sesión solo sigue `main`:** el refspec del clon que monta una sesión en la nube es `+refs/heads/main:refs/remotes/origin/main`, así que `git status` nunca ve otras ramas remotas aunque el push haya funcionado. **Por qué importa:** la verdad sobre qué hay en GitHub es `git ls-remote origin`, no `git status`; no reintentes un push por lo que diga el estado local.
@@ -98,11 +100,11 @@ Los errores son oportunidades de aprendizaje. Cuando algo falla:
 
 ## Autoridad de las fuentes, en orden
 
-1. **Paquete de estimación v1** del cliente (funcional de Brayan del 19/09 y anexo técnico de Miguel del 24/09): reglas de negocio y casos de aceptación A01–A12. Está en Drive; `docs/fuentes/README.md` tiene los enlaces.
-2. **Guía técnica de integración v2** del cliente, del 08/10: entorno, límites de API y convivencia. Copia en `docs/arquitectura/guia-integracion-v2.md`. Reemplaza expresamente a la v1.
-3. **Roadmap aprobado del 01/10/2026** (`docs/requisitos/roadmap-aprobado-20261001.md`, con el HTML original al lado): el artefacto que Tu Merch aprobó. Etapas K/D1/D2/D3, 19 casos, dependencias `dep-01`–`dep-15`, decisiones `dec-01`–`dec-10`, exclusiones. **Manda en materia contractual.** La propuesta del mismo día lo respalda en honorarios y condiciones.
-4. **ADR de `docs/decisiones/`**: deciden lo que las fuentes dejaron «por validar». ADR-001 trata el cronograma; ADR-002, el despliegue y la arquitectura.
-5. **`docs/requisitos/base-proyecto.md`**: síntesis de todo lo anterior para trabajar.
+1. **Roadmap aprobado del 01/10/2026** (`docs/requisitos/roadmap-aprobado-20261001.md`): **la fuente de la verdad.** Es lo que Tu Merch aprobó: alcance, entregables y criterios por etapa K/D1/D2/D3, los 19 casos de aceptación, las dependencias `dep-01`–`dep-15`, las decisiones `dec-01`–`dec-10` y las exclusiones. Gana ante cualquier contradicción. La propuesta del mismo día lo respalda en honorarios y condiciones.
+2. **ADR de `docs/decisiones/`**: deciden lo que el roadmap dejó abierto. ADR-001 trata el cronograma; ADR-002, el despliegue; ADR-003, el almacenamiento de fuentes del cliente.
+3. **Fuentes complementarias del cliente**: el paquete de estimación v1 (funcional del 19/09 y anexo técnico del 24/09) y la guía técnica de integración v2 del 08/10. Sirven para el **detalle que el roadmap no cubre** —contratos de API, metacampos, convivencia con MIA, contactos QA— y nada más. El paquete fue insumo del roadmap; la guía v2 es posterior a él y por eso trae información nueva que el roadmap no pudo incluir. Si cualquiera de las dos contradice el roadmap, **no se aplica**: se registra con `directives/registrar_decision.md`. Si amplía el alcance, es una solicitud de cambio, no código.
+4. **Información nueva del cliente durante la ejecución** —documentos, correos, mensajes del grupo de WhatsApp— entra solo por `directives/incorporar_fuente.md`, que decide dónde se organiza y qué relevancia tiene. Hasta pasar por ahí, no es fuente.
+5. **`docs/requisitos/base-proyecto.md`**: síntesis de todo lo anterior para trabajar. Si contradice al roadmap, gana el roadmap y la base se corrige.
 
 «v2» designa la guía técnica del cliente. Los documentos de Luup Lab se citan por fecha. Usa los identificadores del roadmap —`dep-NN`, `dec-NN`, `A01`–`A12`, `M-A01`–`M-A07`— porque son los que el cliente ve; los `P0`/`P1`/`P2` de la base priorizan, no citan.
 
@@ -145,6 +147,7 @@ Invariantes que valen en todo el sistema:
 10. Tratar la etiqueta `Desactivar MIA` como veto o como permiso: su semántica está sin resolver (P0-07).
 11. Enviar a clientes fuera de horario: L–V 08:00–18:00 y sábado 08:00–13:00, `America/Bogota`. Fuera de eso, a la cola.
 12. Dependencias en el host del VPS, rutas absolutas del VPS o imágenes `latest`. Rompe la migración (ADR-002).
+13. **Subir al repositorio cualquier documento del cliente, su transcripción, precios, honorarios o datos de personas de Tu Merch mientras el repositorio sea público.** Verifica la visibilidad con `gh api repos/Ramirezgon19/tu-merch --jq .visibility` antes de subir algo que venga del cliente; no confíes en lo que diga un documento. Hasta que ADR-003 decida el almacenamiento, el material del cliente vive solo en `.tmp/`.
 
 ## Cómo trabajar
 
