@@ -10,6 +10,7 @@ Las directivas son los SOP del proyecto: qué hacer, con qué entradas, con qué
 | `cola_operaciones.md` | Al tocar cualquier efecto externo: WhatsApp, Siigo, Bold, Drive, Telegram, etapas del CRM |
 | `despliegue_docker.md` | Al tocar `infra/`, levantar o migrar el stack |
 | `cierre_de_bloque.md` | Al terminar una sesión de trabajo |
+| `incorporar_fuente.md` | Cuando el cliente entrega información nueva: documento, correo o mensaje del grupo |
 
 ## El roadmap, repartido en las tres capas
 

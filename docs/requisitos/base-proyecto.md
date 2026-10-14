@@ -1,6 +1,6 @@
 # Cotizador automático · Tu Merch × Luup Lab
 
-Versión 0.4 · Revisión documental: 9 de octubre de 2026. Actualización de planificación, equipo y repositorio: 10 de octubre de 2026. Incorporación del alcance contractual aprobado y del cronograma recalculado: 12 de octubre de 2026, hora de Bogotá.
+Versión 0.5 · Revisión documental: 9 de octubre de 2026. Actualización de planificación, equipo y repositorio: 10 de octubre de 2026. Incorporación del alcance contractual aprobado y del cronograma recalculado: 12 de octubre de 2026, hora de Bogotá.
 Estado: boceto para revisión, con el alcance contractual ya aprobado. No constituye aprobación de arquitectura, de las reglas pendientes ni de la fecha de salida. Confidencial, conforme al NDA mencionado en las fuentes.
 
 ## 1. Resultado de la revisión
@@ -24,6 +24,8 @@ Hay información suficiente para diseñar el recorrido y los contratos de datos.
 | 01_portada.jpg; 02_ficha_producto.jpg; 03_cuerpo_cotizacion.jpg; 04_social.jpg; 05_terminos.jpg; 06_cuerpo_ejemplo2.jpg | Seis imágenes inspeccionadas: portada, ficha, tabla, página social, condiciones y segundo cuerpo. Referencias de presentación, no tablas comerciales vigentes. |
 
 Las reglas de negocio provienen del funcional. Las precisiones técnicas del anexo resuelven algunos de sus pendientes; la guía v2 actualiza el entorno; la propuesta aprobada fija el alcance contratado y las fechas. Las contradicciones restantes deben resolverse explícitamente, sin seleccionar una interpretación por conveniencia.
+
+**Orden de autoridad (12–13/10/2026):** el roadmap aprobado es la fuente de la verdad y gana ante cualquier contradicción; los ADR deciden lo que dejó abierto; el paquete de estimación y la guía v2 complementan en el detalle que el roadmap no cubre y no se aplican donde lo contradigan; la información nueva del cliente entra por `directives/incorporar_fuente.md`. El detalle está en `CLAUDE.md`.
 
 Aviso de nomenclatura: en este repositorio **«v2» designa la guía técnica de integración del cliente** del 08/10. La propuesta de Luup Lab se cita siempre por su fecha, 01/10/2026, nunca como «v2», para no confundir dos documentos distintos.
 
@@ -256,3 +258,4 @@ Al terminar un bloque de trabajo, dejar un registro breve: qué cambió, cómo s
 - v0.2 · 10/10/2026: inicio 15/10, salida tentativa 15/11, rol de Miguel aclarado, Alejo/David confirmados y Juanfe pendiente; diseño desacoplado de la recepción de la calculadora; pautas de trabajo asíncrono.
 - v0.3 · 10/10/2026: GitHub conectado; David confirmó el repositorio privado `Ramirezgon19/tu-merch`; documentación inicial incorporada.
 - v0.4 · 12/10/2026: roadmap aprobado del 01/10 incorporado como fuente de autoridad contractual, transcrito a markdown y con su HTML original en el repositorio, junto con la propuesta que lo respalda; alcance contratado, exclusiones, honorarios y dependencias exigidas registrados en §1; parte de alcance de P0-02 cerrada; cronograma recalculado sobre el inicio del 15/10 en ADR-001 y reflejado en §9, pendiente de confirmación de Brayan; aviso de nomenclatura sobre «v2»; `CLAUDE.md` y `AGENTS.md` añadidos con las reglas para personas y agentes de código.
+- v0.5 · 13/10/2026: el roadmap aprobado pasa a primera autoridad; el paquete y la guía v2 quedan como complementos de detalle; nueva directiva para incorporar información del cliente; ADR-003 propone dónde almacenar las fuentes, con el hallazgo de que el repositorio es público.
