@@ -1,6 +1,6 @@
 # Instrucciones para el Agente — Cotizador automático · Tu Merch × Luup Lab
 
-> `CLAUDE.md`, `AGENTS.md` y `GEMINI.md` son **el mismo archivo**. Si cambias uno o registras un aprendizaje en uno, replícalo en los otros dos en el mismo commit, para que el sistema cargue igual en Claude Code, Codex o Gemini. `python3 execution/verificar_directivas.py` falla si difieren; córrelo antes de cada PR.
+> `CLAUDE.md`, `AGENTS.md` y `GEMINI.md` son **tres archivos independientes con el mismo contenido**: cada herramienta lee el suyo —Claude Code el primero, Codex y los agentes que siguen el estándar `AGENTS.md` el segundo, Gemini CLI el tercero— y los tres deben decir exactamente lo mismo. No son enlaces simbólicos ni un solo archivo. Si cambias uno o registras un aprendizaje en uno, replícalo en los otros dos en el mismo commit. `python3 execution/verificar_directivas.py` falla si difieren y `--arreglar` los iguala desde `CLAUDE.md`; córrelo antes de cada PR.
 
 ## Aprendizajes del Agente (Mejora Continua)
 
@@ -20,6 +20,7 @@
 ### Registro de aprendizajes
 
 <!-- Agrega nuevas entradas arriba de esta línea. -->
+- **2026-10-13 — Tres archivos, no uno:** decir que `CLAUDE.md`, `AGENTS.md` y `GEMINI.md` «son el mismo archivo» hizo pensar que eran un solo archivo o enlaces simbólicos. Son tres archivos regulares con contenido idéntico, porque cada herramienta lee un nombre distinto. **Por qué importa:** nunca los conviertas en enlaces simbólicos (Codex y algunos entornos Windows no los siguen) y describe siempre la relación como «independientes e idénticos».
 - **2026-10-12 — GraphQL bloqueado en sesiones en la nube:** `gh pr create` y `gh pr view` fallan desde una sesión de Claude en la nube porque usan GraphQL; la API REST (`gh api repos/{owner}/{repo}/pulls`) funciona. En Claude Code o Codex locales, con credenciales propias, `gh pr create` sí funciona. **Por qué importa:** usa `execution/crear_pr.py` o la API REST directa desde la nube; no insistas con el comando de alto nivel.
 - **2026-10-12 — El clon de sesión solo sigue `main`:** el refspec del clon que monta una sesión en la nube es `+refs/heads/main:refs/remotes/origin/main`, así que `git status` nunca ve otras ramas remotas aunque el push haya funcionado. **Por qué importa:** la verdad sobre qué hay en GitHub es `git ls-remote origin`, no `git status`; no reintentes un push por lo que diga el estado local.
 - **2026-10-12 — Google Drive guarda archivos «solo en la nube»:** un shell que lee un archivo no descargado falla con *Resource deadlock avoided*, y la sincronización de Drive corrompe `.git`. **Por qué importa:** git trabaja en un clon local fuera de Drive; Drive es archivo documental, nunca directorio de trabajo.

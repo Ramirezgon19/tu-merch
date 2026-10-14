@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """Falla si CLAUDE.md, AGENTS.md y GEMINI.md no son byte a byte iguales.
 
+Son tres archivos regulares e independientes (nunca enlaces simbólicos): cada
+herramienta lee el suyo. CLAUDE.md es la fuente; los otros dos son copias.
+
 Uso:  python3 execution/verificar_directivas.py [--arreglar]
   --arreglar  copia CLAUDE.md sobre los otros dos en lugar de fallar.
 Pensado para correr antes de cada PR y como hook de pre-commit.
