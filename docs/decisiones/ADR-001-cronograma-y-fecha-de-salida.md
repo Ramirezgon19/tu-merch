@@ -1,6 +1,6 @@
 # ADR-001 · Cronograma e hitos desde el inicio del 15/10
 
-**Estado:** propuesta para aprobación de Brayan. No es decisión aprobada.
+**Estado:** propuesta para aprobación de Brayan. No es decisión aprobada. **Actualizado el 15/10/2026:** el arranque contractual (T) pasa a ser el día en que se reciba el anticipo; ver «Actualización 15/10».
 **Fecha:** 12 de octubre de 2026 · **Propone:** Alejo · **Decide:** Brayan (Tu Merch), con David
 **Cierra:** P0-02 de `docs/requisitos/base-proyecto.md` §8, en su parte de cronograma por hitos
 **Fuentes:** [roadmap aprobado del 01/10/2026](../requisitos/roadmap-aprobado-20261001.md), que declara `GO_LIVE` el 2026-10-29 y la etapa D2 del 15 al 29 de octubre; [propuesta del 01/10/2026](../requisitos/propuesta-aprobada-20261001.md) §2 y §4; paquete de estimación §20 hito 5 y §21; anexo técnico §4.5
@@ -60,6 +60,29 @@ Esta separación conserva la fecha que el cliente fijó, protege el flujo de caj
 - Las fechas de dependencias del cliente que la guía fijaba el 7, 13–14, 15 y 21 de octubre quedan recalculadas en `docs/requisitos/base-proyecto.md` §9 y requieren reconfirmación con cada responsable, una por una. Las 15 dependencias y las 10 decisiones del roadmap (`dep-01`–`dep-15`, `dec-01`–`dec-10`) llevan fechas del 6 y el 7 de octubre que ya pasaron: hay que reemitirlas con el nuevo inicio.
 - El roadmap declara como festivos el 12/10, el 2/11 y el 16/11. **Faltan el 8 y el 25 de diciembre**, que entran en juego si D3 se corre a diciembre. Hay que añadirlos antes de recalcular D3.
 
+## Actualización 15/10/2026 · el arranque es el anticipo, no el kickoff
+
+El kickoff ocurrió el jueves 15/10, pero **el anticipo no se ha recibido**. El roadmap aprobado pone «contrato de honorarios firmado y anticipo recibido» como criterio de la etapa K, y la propuesta aprobada dice que, si el arranque ocurre después, el cronograma se desplaza día por día. Por eso **T es el día hábil en que se reciba el anticipo**, no el del kickoff. La tabla del cálculo de arriba sigue siendo válida solo si el anticipo llega el 15/10.
+
+El equipo ya avanza antes de T (sondeo de APIs y contacto QA, issues #19–#22), pero ese trabajo no adelanta las fechas contractuales: se registra como avance a riesgo de Luup Lab.
+
+Mismos desplazamientos en días hábiles, con festivos de Colombia (2/11, 16/11, 8/12, 25/12):
+
+| Anticipo recibido (T) | Sombra (T+5) | Hito contractual: lista de permitidos, acta y segundo 50 % (T+10) | Piloto (T+11 a T+15) | Producción (T+16) | Decisión mes 2 (T+12) | D3 (T+17 a T+35) |
+|---|---|---|---|---|---|---|
+| jue 15/10 | jue 22/10 | jue 29/10 | vie 30/10 – vie 6/11 | lun 9/11 | mar 3/11 | mar 10/11 – lun 7/12 |
+| vie 16/10 | vie 23/10 | vie 30/10 | mar 3/11 – lun 9/11 | mar 10/11 | mié 4/11 | mié 11/11 – mié 9/12 |
+| lun 19/10 | lun 26/10 | mar 3/11 | mié 4/11 – mar 10/11 | mié 11/11 | jue 5/11 | jue 12/11 – jue 10/12 |
+| mar 20/10 | mar 27/10 | mié 4/11 | jue 5/11 – mié 11/11 | jue 12/11 | vie 6/11 | vie 13/11 – vie 11/12 |
+| jue 22/10 | jue 29/10 | vie 6/11 | lun 9/11 – vie 13/11 | mar 17/11 | mar 10/11 | mié 18/11 – mar 15/12 |
+
+Consecuencias:
+
+- **El 29/10 solo se sostiene si el anticipo llega el 15/10.** Cada día hábil de retraso corre todo un día hábil; desde el 19/10 el hito cruza el festivo del 2/11.
+- El margen del 15/11 que estimó David se consume si el anticipo llega después del 20/10 (producción el 17/11 con anticipo el 22/10).
+- Las fechas de `dep-01`–`dep-15` y `dec-01`–`dec-10` (#4) se reemiten sobre T, no sobre el kickoff.
+- La validez de la oferta (30/10) sigue requiriendo extensión en el mismo documento que confirme estas fechas.
+
 ## Pendiente para cerrar este ADR
 
-Confirmación escrita de Brayan sobre los tres puntos: qué entrega el hito del 29/10, que el acta y el pago van contra ese hito, y que la producción abierta queda el 9/11. Sin esa confirmación, la base del proyecto debe seguir marcando la fecha de salida como no aprobada.
+Fecha de recepción del anticipo, que fija T. Confirmación escrita de Brayan sobre los tres puntos: qué entrega el hito del 29/10, que el acta y el pago van contra ese hito, y que la producción abierta queda el 9/11. Sin esa confirmación, la base del proyecto debe seguir marcando la fecha de salida como no aprobada.
