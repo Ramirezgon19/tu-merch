@@ -66,20 +66,20 @@ El kickoff ocurrió el jueves 15/10, pero **el anticipo no se ha recibido**. El 
 
 El equipo ya avanza antes de T (sondeo de APIs y contacto QA, issues #19–#22), pero ese trabajo no adelanta las fechas contractuales: se registra como avance a riesgo de Luup Lab.
 
-Mismos desplazamientos en días hábiles, con festivos de Colombia (2/11, 16/11, 8/12, 25/12):
+Mismos desplazamientos en días hábiles, **contando solo lunes a viernes, sin descontar festivos de Colombia** (instrucción de Alejo del 15/10: el cronograma del proyecto no se ajusta por festivos). Esto no cambia la regla de negocio de la vigencia de la cotización, que sí usa festivos (#13).
 
 | Anticipo recibido (T) | Sombra (T+5) | Hito contractual: lista de permitidos, acta y segundo 50 % (T+10) | Piloto (T+11 a T+15) | Producción (T+16) | Decisión mes 2 (T+12) | D3 (T+17 a T+35) |
 |---|---|---|---|---|---|---|
-| jue 15/10 | jue 22/10 | jue 29/10 | vie 30/10 – vie 6/11 | lun 9/11 | mar 3/11 | mar 10/11 – lun 7/12 |
-| vie 16/10 | vie 23/10 | vie 30/10 | mar 3/11 – lun 9/11 | mar 10/11 | mié 4/11 | mié 11/11 – mié 9/12 |
-| lun 19/10 | lun 26/10 | mar 3/11 | mié 4/11 – mar 10/11 | mié 11/11 | jue 5/11 | jue 12/11 – jue 10/12 |
-| mar 20/10 | mar 27/10 | mié 4/11 | jue 5/11 – mié 11/11 | jue 12/11 | vie 6/11 | vie 13/11 – vie 11/12 |
-| jue 22/10 | jue 29/10 | vie 6/11 | lun 9/11 – vie 13/11 | mar 17/11 | mar 10/11 | mié 18/11 – mar 15/12 |
+| jue 15/10 | jue 22/10 | jue 29/10 | vie 30/10 – jue 5/11 | vie 6/11 | lun 2/11 | lun 9/11 – jue 3/12 |
+| vie 16/10 | vie 23/10 | vie 30/10 | lun 2/11 – vie 6/11 | lun 9/11 | mar 3/11 | mar 10/11 – vie 4/12 |
+| lun 19/10 | lun 26/10 | lun 2/11 | mar 3/11 – lun 9/11 | mar 10/11 | mié 4/11 | mié 11/11 – lun 7/12 |
+| mar 20/10 | mar 27/10 | mar 3/11 | mié 4/11 – mar 10/11 | mié 11/11 | jue 5/11 | jue 12/11 – mar 8/12 |
+| jue 22/10 | jue 29/10 | jue 5/11 | vie 6/11 – jue 12/11 | vie 13/11 | lun 9/11 | lun 16/11 – jue 10/12 |
 
 Consecuencias:
 
-- **El 29/10 solo se sostiene si el anticipo llega el 15/10.** Cada día hábil de retraso corre todo un día hábil; desde el 19/10 el hito cruza el festivo del 2/11.
-- El margen del 15/11 que estimó David se consume si el anticipo llega después del 20/10 (producción el 17/11 con anticipo el 22/10).
+- **El 29/10 solo se sostiene si el anticipo llega el 15/10.** Cada día hábil de retraso corre todo un día hábil.
+- Sin festivos, la producción con anticipo el 15/10 queda el 6/11, tres días hábiles antes que en el cálculo original (que descontaba el 2/11). Con anticipo hasta el 22/10, la producción sigue antes del margen del 15/11 que estimó David.
 - Las fechas de `dep-01`–`dep-15` y `dec-01`–`dec-10` (#4) se reemiten sobre T, no sobre el kickoff.
 - La validez de la oferta (30/10) sigue requiriendo extensión en el mismo documento que confirme estas fechas.
 
