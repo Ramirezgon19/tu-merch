@@ -20,6 +20,10 @@
 ### Registro de aprendizajes
 
 - **2026-10-13 — Fuentes del cliente en Drive vía Composio:** se descartó un repositorio aparte y el VPS de producción; las fuentes viven en una carpeta restringida de Drive y el stack las lee por Composio, con la clave solo en el `.env` del VPS. **Por qué importa:** nunca copies una fuente al repositorio; y Composio es subencargado bajo la Ley 1581, así que no cargues insumos con datos personales hasta que Tu Merch lo apruebe.
+- **2026-10-15 — Mercately corta la conexión al User-Agent de Python:** con `Python-urllib/3.x` la API cierra la conexión TLS sin responder (`Connection reset by peer`; curl con ese mismo agente falla igual) y con un User-Agent propio responde normal. **Por qué importa:** todo adaptador o script contra Mercately envía un `User-Agent` explícito; un reset no es caída del servicio ni error de credenciales.
+- **2026-10-15 — Contactos QA de Mercately actualizados por Miguel:** la línea de Angie ya no está disponible; quedan Daniela, Miguel y una línea de Luup Lab, las tres con `prueba-luuplab` y `Desactivar MIA`. Miguel pide escribir primero desde la línea QA para abrir la ventana de 24 h antes de cualquier mensaje libre. **Por qué importa:** la guía v2 §1.4 quedó desactualizada; y el mensaje libre dentro de la ventana choca con la prohibición 6, que sigue vigente hasta registrar la decisión.
+- **2026-10-15 — Variables vacías del entorno tapan el `.env`:** el shell de Alejo exporta `MERCATELY_QA_TELEFONO` vacía y `os.environ.setdefault` no la reemplazaba. **Por qué importa:** los cargadores de `.env` tratan una variable vacía como no definida.
+- **2026-10-15 — Shopify real difiere de la guía v2:** el mínimo `custom.cantidad_minima` está a nivel de **producto** y es texto; hay un segundo mínimo `theme.cus_qty`; parte del catálogo antiguo no tiene `variant.sku`; hay 1.888 productos ACTIVE, no ~1.600. **Por qué importa:** no asumas mínimo por variante ni SKU siempre presente; detalle en el issue #19.
 <!-- Agrega nuevas entradas arriba de esta línea. -->
 - **2026-10-13 — El repositorio es público:** la base decía «repositorio privado confirmado» y el repositorio `Ramirezgon19/tu-merch` es público; se subieron propuesta, roadmap y guía bajo NDA dando por cierto el documento. **Por qué importa:** la visibilidad se verifica contra GitHub (`gh api … --jq .visibility`), nunca contra lo que diga la documentación; regla 13 de prohibiciones.
 - **2026-10-13 — El roadmap manda; las fuentes del cliente complementan:** el paquete fue insumo del roadmap, pero la guía v2 es del 08/10, posterior al roadmap del 01/10, y trae detalle que el roadmap no pudo incluir. **Por qué importa:** no asumas que todo lo del cliente «ya está en el roadmap»; úsalo para el detalle y regístralo si contradice.
@@ -142,7 +146,7 @@ Invariantes que valen en todo el sistema:
 4. Reintentar a ciegas un envío de WhatsApp, un cobro, una orden o una factura.
 5. Efectos externos fuera de la cola de operaciones o sin respetar el modo de WF-00.
 6. Texto libre por la API de WhatsApp. Solo plantillas aprobadas por Meta.
-7. Tocar contactos o negociaciones reales. Solo los tres contactos QA etiquetados, con negociaciones prefijadas `QA Luup —`. No asumir que se pueden borrar.
+7. Tocar contactos o negociaciones reales. Solo los contactos QA etiquetados `prueba-luuplab` —desde el 15/10/2026 Daniela, Miguel y la línea de Luup Lab; la de Angie ya no está disponible—, con negociaciones prefijadas `QA Luup —` que se borran al terminar. Verifica las etiquetas del contacto por API antes de escribir.
 8. Tocar contactos de las secuencias `en-secuencia-navidad`, `en-secuencia-normal` o `secuencia-sin-fecha`, ni las exclusiones comerciales. Se revisan justo antes de cada envío.
 9. Crear o renombrar etapas del embudo de Mercately.
 10. Tratar la etiqueta `Desactivar MIA` como veto o como permiso: su semántica está sin resolver (P0-07).

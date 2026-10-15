@@ -53,7 +53,9 @@ def cargar_env():
         if not linea or linea.startswith("#") or "=" not in linea:
             continue
         clave, valor = linea.split("=", 1)
-        os.environ.setdefault(clave.strip(), valor.strip().strip('"').strip("'"))
+        # Una variable vacía en el entorno cuenta como no definida: no debe tapar la del .env.
+        if not os.environ.get(clave.strip()):
+            os.environ[clave.strip()] = valor.strip().strip('"').strip("'")
 
 
 def requerir(*nombres):
@@ -80,6 +82,8 @@ def forma(valor, profundidad=0):
 
 def pedir(metodo, url, cabeceras, cuerpo=None):
     datos = cuerpo.encode("utf-8") if isinstance(cuerpo, str) else cuerpo
+    # Mercately corta la conexión TLS con el User-Agent por defecto de urllib; se envía uno propio.
+    cabeceras = {"User-Agent": "luuplab-cotizador-sondeo/1.0", **cabeceras}
     req = urllib.request.Request(url, data=datos, method=metodo, headers=cabeceras)
     try:
         with urllib.request.urlopen(req, timeout=30) as r:
