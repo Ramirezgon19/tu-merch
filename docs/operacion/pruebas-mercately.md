@@ -52,8 +52,23 @@ Durante:
 Después:
 8. Registrar en el issue qué se envió (plantilla y parámetros, sin teléfono), la respuesta HTTP y lo que mostró la conversación.
 
+## Plantillas del cotizador (acordadas con Miguel el 15/10/2026)
+
+Miguel prefirió no abrir un usuario de Mercately para Luup Lab (daría acceso a todo el inbox con clientes reales). En su lugar, Tu Merch registra plantillas de Utilidad y nos pasa el `internal_id` cuando Meta las apruebe, y si hace falta un vendedor humano lo coordina con su equipo.
+
+| Plantilla | Encabezado | Texto | Uso | Estado al 15/10 |
+|---|---|---|---|---|
+| `cotizador_respuesta_solicitud` | Ninguno | «Hola {{1}}, te escribimos de Tu merch sobre tu solicitud de cotización de PRUEBA: {{2}}. Si tienes alguna duda, responde este mensaje y te ayudamos.» | Simular las respuestas del vendedor en pruebas | Aprobada por Miguel; Tu Merch la registra hoy; esperando ID de Meta |
+| `cotizador_envio_cotizacion` | Documento (PDF) | «Hola {{1}}, te compartimos la cotización N.º {{2}} de PRUEBA de Tu merch por un total de {{3}}, válida hasta el {{4}}. Responde este mensaje para aprobarla o pedir ajustes.» | Enviar la cotización | Aprobada por Miguel; se registra después de la 1 |
+
+- La palabra **PRUEBA va en el texto fijo**: estas plantillas no sirven para clientes. Para el piloto Tu Merch registrará versiones sin «PRUEBA», con otro `internal_id`. Los IDs viven en `.env` por entorno, nunca en el código.
+- **`media_url` en cada envío**, con URL pública y estable: Mercately no reutiliza el archivo cargado en la plantilla. Con imagen funciona en producción de Tu Merch; **con documento PDF nunca lo han probado por API**. Se valida junto con Miguel, con el contacto QA, apenas se apruebe la 2.
+- Al enviar, cada valor de variable va en una sola línea: sin saltos de línea, sin tabulaciones y sin más de cuatro espacios seguidos, o Meta rechaza el mensaje.
+- Las demás plantillas de la propuesta del 01/10 (faltan datos, sin disponibilidad, recordatorio de pago, facturación, pedido al proveedor, factura para revisión, vencimiento) siguen pendientes de redacción por Luup Lab.
+
 ## Preguntas abiertas para Miguel
 
 - ¿Se puede excluir del bot de bienvenida a los contactos con `prueba-luuplab`? Si no, ¿hay forma de distinguir por API sus mensajes?
-- ¿Quién crea y somete a Meta la plantilla del cotizador, y con qué cuenta de Gupshup?
+- ~~¿Quién crea y somete a Meta la plantilla del cotizador?~~ Resuelta el 15/10: Tu Merch la registra con nuestro texto.
+- ¿Nos comparten `dep-08` (10 conversaciones anonimizadas y 5 cotizaciones reales)? Pedido el 15/10, sin respuesta todavía.
 - ¿Hay límites de envío o de llamadas a la API además de los que ya vigilan sus vigías?

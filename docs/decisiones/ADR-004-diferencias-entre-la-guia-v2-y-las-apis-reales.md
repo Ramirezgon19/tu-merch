@@ -23,6 +23,7 @@ El sondeo leyó Shopify (producción, solo lectura) y Mercately (solo el contact
 **4. Mensajes libres dentro de la ventana de 24 h.** Miguel autorizó el 15/10, para pruebas, mensajes libres después de que la línea QA escriba primero a la línea de Tu Merch. La prohibición 6 dice «solo plantillas aprobadas por Meta».
 *Propuesta:* la prohibición 6 se mantiene para clientes. Para los contactos QA se permite texto libre solo dentro de la ventana abierta por el propio contacto, identificado como prueba. Hasta que Miguel confirme esta lectura por escrito, solo plantillas.
 *Actualización 15/10/2026:* la cuestión queda resuelta por la plataforma. La conexión de Tu Merch es API oficial vía Gupshup, y la API pública de Mercately solo ofrece texto libre (`/whatsapp/send_message`) para conexiones por QR. Con la ventana abierta por la línea QA, un intento único respondió 500 y no salió nada. El cotizador solo envía plantillas; el texto libre queda para personas desde el inbox. Detalle en `docs/operacion/pruebas-mercately.md`.
+*Confirmado por Miguel el 15/10/2026:* en la API oficial los salientes automáticos solo van por plantilla aprobada; Tu Merch ya reprodujo el mismo 500 en agosto. No se abre usuario de Mercately para Luup Lab; las respuestas del vendedor en pruebas se simulan con la plantilla `cotizador_respuesta_solicitud`. **Punto 4 cerrado.**
 
 ## Otros hallazgos que complementan sin contradecir
 
