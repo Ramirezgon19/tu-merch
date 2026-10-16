@@ -1,6 +1,6 @@
 # ADR-001 · Cronograma e hitos desde el inicio del 15/10
 
-**Estado:** propuesta para aprobación de Brayan. No es decisión aprobada. **Actualizado el 15/10/2026:** el arranque contractual (T) pasa a ser el día en que se reciba el anticipo; ver «Actualización 15/10».
+**Estado:** propuesta para aprobación de Brayan. No es decisión aprobada. **Actualizado el 16/10/2026:** anticipo recibido el 16/10, kickoff oficial el 19/10 y roadmap desplazado 14 días; ver «Actualización 16/10».
 **Fecha:** 12 de octubre de 2026 · **Propone:** Alejo · **Decide:** Brayan (Tu Merch), con David
 **Cierra:** P0-02 de `docs/requisitos/base-proyecto.md` §8, en su parte de cronograma por hitos
 **Fuentes:** [roadmap aprobado del 01/10/2026](../requisitos/roadmap-aprobado-20261001.md), que declara `GO_LIVE` el 2026-10-29 y la etapa D2 del 15 al 29 de octubre; [propuesta del 01/10/2026](../requisitos/propuesta-aprobada-20261001.md) §2 y §4; paquete de estimación §20 hito 5 y §21; anexo técnico §4.5
@@ -83,6 +83,24 @@ Consecuencias:
 - Las fechas de `dep-01`–`dep-15` y `dec-01`–`dec-10` (#4) se reemiten sobre T, no sobre el kickoff.
 - La validez de la oferta (30/10) sigue requiriendo extensión en el mismo documento que confirme estas fechas.
 
+## Actualización 16/10/2026 · anticipo recibido y kickoff oficial el 19/10
+
+El anticipo se recibió el **viernes 16/10** y el **kickoff oficial es el lunes 19/10**. Alejo decidió reprogramar desplazando **todo el roadmap aprobado 14 días** (del kickoff del lun 5/10 al lun 19/10), sin descontar festivos. Al ser 14 días exactos, cada hito cae en el mismo día de la semana que en el original. Esto reemplaza la fórmula T+n de la actualización anterior como propuesta vigente.
+
+| Etapa | Roadmap aprobado (01/10) | Reprogramado (16/10) |
+|---|---|---|
+| Arranque (K): kickoff y accesos | lun 5/10 y mar 6/10 | lun 19/10 y mar 20/10 |
+| D1 · cotizador en sombra | 7 – 14/10 | **mié 21/10 – mié 28/10 (entrega D1)** |
+| D2 · construcción del cierre digital | 15 – 21/10 | 29/10 – 4/11 |
+| D2 · lista de permitidos | mié 21/10 | mié 4/11 |
+| D2 · piloto | 22 – 28/10 | 5 – 11/11 |
+| Producción, acta de Fase 1 y segundo 50 % | jue 29/10 | **jue 12/11** |
+| Tablas de marcación M01–M09 | vie 23/10 | vie 6/11 |
+| D3 · mes 2 | 3 – 27/11 | 17/11 – 11/12 |
+| Dependencias `dep-NN` y decisiones `dec-NN` | 6/10 – 23/10 | +14 días cada una (20/10 – 6/11) |
+
+El roadmap reprogramado está en `docs/requisitos/20261016_Roadmap_Cotizador_TuMerch_reprogramado.html`, generado desde el original aprobado (que no se modifica). Es una **propuesta pendiente de confirmación de Brayan**; hasta entonces el aprobado sigue siendo el del 01/10.
+
 ## Pendiente para cerrar este ADR
 
-Fecha de recepción del anticipo, que fija T. Confirmación escrita de Brayan sobre los tres puntos: qué entrega el hito del 29/10, que el acta y el pago van contra ese hito, y que la producción abierta queda el 9/11. Sin esa confirmación, la base del proyecto debe seguir marcando la fecha de salida como no aprobada.
+Confirmación escrita de Brayan del roadmap reprogramado del 16/10. Confirmación escrita de Brayan sobre los tres puntos: qué entrega el hito del 29/10, que el acta y el pago van contra ese hito, y que la producción abierta queda el 9/11. Sin esa confirmación, la base del proyecto debe seguir marcando la fecha de salida como no aprobada.
