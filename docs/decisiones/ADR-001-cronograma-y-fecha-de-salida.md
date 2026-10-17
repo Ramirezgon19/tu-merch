@@ -103,4 +103,4 @@ El roadmap reprogramado está en `docs/requisitos/20261016_Roadmap_Cotizador_TuM
 
 ## Pendiente para cerrar este ADR
 
-Confirmación escrita de Brayan del roadmap reprogramado del 16/10. Confirmación escrita de Brayan sobre los tres puntos: qué entrega el hito del 29/10, que el acta y el pago van contra ese hito, y que la producción abierta queda el 9/11. Sin esa confirmación, la base del proyecto debe seguir marcando la fecha de salida como no aprobada.
+Confirmación escrita de Brayan del roadmap reprogramado del 16/10: entrega D1 en sombra el 28/10, lista de permitidos el 4/11, producción, acta de Fase 1 y segundo 50 % el 12/11, y D3 del 17/11 al 11/12. Las propuestas anteriores se conservan como historial y quedan reemplazadas por la actualización del 16/10. Sin esa confirmación, la base del proyecto debe seguir marcando la fecha de salida como no aprobada.
