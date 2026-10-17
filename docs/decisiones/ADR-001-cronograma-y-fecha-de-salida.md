@@ -1,6 +1,6 @@
 # ADR-001 · Cronograma e hitos desde el inicio del 15/10
 
-**Estado:** propuesta para aprobación de Brayan. No es decisión aprobada.
+**Estado:** propuesta para aprobación de Brayan. No es decisión aprobada. **Actualizado el 16/10/2026:** anticipo recibido el 16/10, kickoff oficial el 19/10 y roadmap desplazado 14 días; ver «Actualización 16/10».
 **Fecha:** 12 de octubre de 2026 · **Propone:** Alejo · **Decide:** Brayan (Tu Merch), con David
 **Cierra:** P0-02 de `docs/requisitos/base-proyecto.md` §8, en su parte de cronograma por hitos
 **Fuentes:** [roadmap aprobado del 01/10/2026](../requisitos/roadmap-aprobado-20261001.md), que declara `GO_LIVE` el 2026-10-29 y la etapa D2 del 15 al 29 de octubre; [propuesta del 01/10/2026](../requisitos/propuesta-aprobada-20261001.md) §2 y §4; paquete de estimación §20 hito 5 y §21; anexo técnico §4.5
@@ -60,6 +60,47 @@ Esta separación conserva la fecha que el cliente fijó, protege el flujo de caj
 - Las fechas de dependencias del cliente que la guía fijaba el 7, 13–14, 15 y 21 de octubre quedan recalculadas en `docs/requisitos/base-proyecto.md` §9 y requieren reconfirmación con cada responsable, una por una. Las 15 dependencias y las 10 decisiones del roadmap (`dep-01`–`dep-15`, `dec-01`–`dec-10`) llevan fechas del 6 y el 7 de octubre que ya pasaron: hay que reemitirlas con el nuevo inicio.
 - El roadmap declara como festivos el 12/10, el 2/11 y el 16/11. **Faltan el 8 y el 25 de diciembre**, que entran en juego si D3 se corre a diciembre. Hay que añadirlos antes de recalcular D3.
 
+## Actualización 15/10/2026 · el arranque es el anticipo, no el kickoff
+
+El kickoff ocurrió el jueves 15/10, pero **el anticipo no se ha recibido**. El roadmap aprobado pone «contrato de honorarios firmado y anticipo recibido» como criterio de la etapa K, y la propuesta aprobada dice que, si el arranque ocurre después, el cronograma se desplaza día por día. Por eso **T es el día hábil en que se reciba el anticipo**, no el del kickoff. La tabla del cálculo de arriba sigue siendo válida solo si el anticipo llega el 15/10.
+
+El equipo ya avanza antes de T (sondeo de APIs y contacto QA, issues #19–#22), pero ese trabajo no adelanta las fechas contractuales: se registra como avance a riesgo de Luup Lab.
+
+Mismos desplazamientos en días hábiles, **contando solo lunes a viernes, sin descontar festivos de Colombia** (instrucción de Alejo del 15/10: el cronograma del proyecto no se ajusta por festivos). Esto no cambia la regla de negocio de la vigencia de la cotización, que sí usa festivos (#13).
+
+| Anticipo recibido (T) | Sombra (T+5) | Hito contractual: lista de permitidos, acta y segundo 50 % (T+10) | Piloto (T+11 a T+15) | Producción (T+16) | Decisión mes 2 (T+12) | D3 (T+17 a T+35) |
+|---|---|---|---|---|---|---|
+| jue 15/10 | jue 22/10 | jue 29/10 | vie 30/10 – jue 5/11 | vie 6/11 | lun 2/11 | lun 9/11 – jue 3/12 |
+| vie 16/10 | vie 23/10 | vie 30/10 | lun 2/11 – vie 6/11 | lun 9/11 | mar 3/11 | mar 10/11 – vie 4/12 |
+| lun 19/10 | lun 26/10 | lun 2/11 | mar 3/11 – lun 9/11 | mar 10/11 | mié 4/11 | mié 11/11 – lun 7/12 |
+| mar 20/10 | mar 27/10 | mar 3/11 | mié 4/11 – mar 10/11 | mié 11/11 | jue 5/11 | jue 12/11 – mar 8/12 |
+| jue 22/10 | jue 29/10 | jue 5/11 | vie 6/11 – jue 12/11 | vie 13/11 | lun 9/11 | lun 16/11 – jue 10/12 |
+
+Consecuencias:
+
+- **El 29/10 solo se sostiene si el anticipo llega el 15/10.** Cada día hábil de retraso corre todo un día hábil.
+- Sin festivos, la producción con anticipo el 15/10 queda el 6/11, tres días hábiles antes que en el cálculo original (que descontaba el 2/11). Con anticipo hasta el 22/10, la producción sigue antes del margen del 15/11 que estimó David.
+- Las fechas de `dep-01`–`dep-15` y `dec-01`–`dec-10` (#4) se reemiten sobre T, no sobre el kickoff.
+- La validez de la oferta (30/10) sigue requiriendo extensión en el mismo documento que confirme estas fechas.
+
+## Actualización 16/10/2026 · anticipo recibido y kickoff oficial el 19/10
+
+El anticipo se recibió el **viernes 16/10** y el **kickoff oficial es el lunes 19/10**. Alejo decidió reprogramar desplazando **todo el roadmap aprobado 14 días** (del kickoff del lun 5/10 al lun 19/10), sin descontar festivos. Al ser 14 días exactos, cada hito cae en el mismo día de la semana que en el original. Esto reemplaza la fórmula T+n de la actualización anterior como propuesta vigente.
+
+| Etapa | Roadmap aprobado (01/10) | Reprogramado (16/10) |
+|---|---|---|
+| Arranque (K): kickoff y accesos | lun 5/10 y mar 6/10 | lun 19/10 y mar 20/10 |
+| D1 · cotizador en sombra | 7 – 14/10 | **mié 21/10 – mié 28/10 (entrega D1)** |
+| D2 · construcción del cierre digital | 15 – 21/10 | 29/10 – 4/11 |
+| D2 · lista de permitidos | mié 21/10 | mié 4/11 |
+| D2 · piloto | 22 – 28/10 | 5 – 11/11 |
+| Producción, acta de Fase 1 y segundo 50 % | jue 29/10 | **jue 12/11** |
+| Tablas de marcación M01–M09 | vie 23/10 | vie 6/11 |
+| D3 · mes 2 | 3 – 27/11 | 17/11 – 11/12 |
+| Dependencias `dep-NN` y decisiones `dec-NN` | 6/10 – 23/10 | +14 días cada una (20/10 – 6/11) |
+
+El roadmap reprogramado está en `docs/requisitos/20261016_Roadmap_Cotizador_TuMerch_reprogramado.html`, generado desde el original aprobado (que no se modifica). Es una **propuesta pendiente de confirmación de Brayan**; hasta entonces el aprobado sigue siendo el del 01/10.
+
 ## Pendiente para cerrar este ADR
 
-Confirmación escrita de Brayan sobre los tres puntos: qué entrega el hito del 29/10, que el acta y el pago van contra ese hito, y que la producción abierta queda el 9/11. Sin esa confirmación, la base del proyecto debe seguir marcando la fecha de salida como no aprobada.
+Confirmación escrita de Brayan del roadmap reprogramado del 16/10: entrega D1 en sombra el 28/10, lista de permitidos el 4/11, producción, acta de Fase 1 y segundo 50 % el 12/11, y D3 del 17/11 al 11/12. Las propuestas anteriores se conservan como historial y quedan reemplazadas por la actualización del 16/10. Sin esa confirmación, la base del proyecto debe seguir marcando la fecha de salida como no aprobada.
