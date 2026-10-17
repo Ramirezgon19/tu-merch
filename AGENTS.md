@@ -19,6 +19,8 @@
 
 ### Registro de aprendizajes
 
+- **2026-10-17 — El aislamiento del dominio también se prueba contra ejemplos inválidos:** una carpeta vacía puede pasar un control de imports sin demostrar que detecta HTTP o SDK. **Por qué importa:** la prueba de arquitectura incluye imports prohibidos directos, relativos y dentro de funciones, además del dominio real y del inicializador de `motor`.
+
 - **2026-10-17 — Errores y rutas también contienen datos:** los cuerpos HTTP de error pueden reflejar datos de la petición y las rutas pueden incluir identificadores personales. **Por qué importa:** el sondeo omite los cuerpos de error y usa títulos genéricos para rutas adicionales; anonimizar solo las respuestas exitosas no basta.
 
 - **2026-10-13 — Fuentes del cliente en Drive vía Composio:** se descartó un repositorio aparte y el VPS de producción; las fuentes viven en una carpeta restringida de Drive y el stack las lee por Composio, con la clave solo en el `.env` del VPS. **Por qué importa:** nunca copies una fuente al repositorio; y Composio es subencargado bajo la Ley 1581, así que no cargues insumos con datos personales hasta que Tu Merch lo apruebe.
