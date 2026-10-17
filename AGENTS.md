@@ -19,6 +19,8 @@
 
 ### Registro de aprendizajes
 
+- **2026-10-17 — Errores y rutas también contienen datos:** los cuerpos HTTP de error pueden reflejar datos de la petición y las rutas pueden incluir identificadores personales. **Por qué importa:** el sondeo omite los cuerpos de error y usa títulos genéricos para rutas adicionales; anonimizar solo las respuestas exitosas no basta.
+
 - **2026-10-13 — Fuentes del cliente en Drive vía Composio:** se descartó un repositorio aparte y el VPS de producción; las fuentes viven en una carpeta restringida de Drive y el stack las lee por Composio, con la clave solo en el `.env` del VPS. **Por qué importa:** nunca copies una fuente al repositorio; y Composio es subencargado bajo la Ley 1581, así que no cargues insumos con datos personales hasta que Tu Merch lo apruebe.
 - **2026-10-15 — Con la API oficial de Mercately no hay texto libre:** la conexión de Tu Merch es API oficial vía Gupshup; `send_message` es solo para conexiones QR y respondió 500 aun con la ventana de 24 h abierta. Además, un bot de bienvenida (imagen + menú) responde a cada entrante y `Desactivar MIA` no lo apaga. **Por qué importa:** el cotizador solo envía plantillas, necesita una propia aprobada por Meta, y WF-02 descarta los mensajes del bot; protocolo en `docs/operacion/pruebas-mercately.md`.
 - **2026-10-15 — Mercately corta la conexión al User-Agent de Python:** con `Python-urllib/3.x` la API cierra la conexión TLS sin responder (`Connection reset by peer`; curl con ese mismo agente falla igual) y con un User-Agent propio responde normal. **Por qué importa:** todo adaptador o script contra Mercately envía un `User-Agent` explícito; un reset no es caída del servicio ni error de credenciales.

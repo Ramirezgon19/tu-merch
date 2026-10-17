@@ -90,15 +90,16 @@ def pedir(metodo, url, cabeceras, cuerpo=None):
             texto = r.read().decode("utf-8")
             return r.status, (json.loads(texto) if texto.strip() else None)
     except urllib.error.HTTPError as e:
-        cuerpo_error = e.read().decode("utf-8", "replace")[:300]
-        return e.code, {"error_http": cuerpo_error}
+        # Un error puede reflejar datos de la petición; nunca conservar su cuerpo.
+        e.close()
+        return e.code, {"error_http": "Cuerpo de error omitido por privacidad."}
 
 
 def imprimir(titulo, estado, cuerpo):
     print(f"\n== {titulo} → HTTP {estado}")
     if isinstance(cuerpo, dict) and "error_http" in cuerpo:
-        # El cuerpo de un error no trae datos de clientes; se muestra para diagnosticar.
-        print(cuerpo["error_http"])
+        # No confiar en mensajes externos, incluso si el llamador proporciona el cuerpo.
+        print("Cuerpo de error omitido por privacidad.")
         return
     print(json.dumps(forma(cuerpo), ensure_ascii=False, indent=2))
 
@@ -194,7 +195,7 @@ def sondear_mercately(rutas_extra):
                   ("Conversación del contacto QA (5 mensajes)", f"/customers/{t}/whatsapp_conversations?page=1&results_per_page=5")]
     else:
         print("Sin MERCATELY_QA_TELEFONO: se omiten las rutas del contacto QA.")
-    rutas += [(f"Ruta adicional {r.split('?')[0]}", r) for r in rutas_extra]
+    rutas += [(f"Ruta adicional {i}", r) for i, r in enumerate(rutas_extra, 1)]
     if not rutas:
         raise SystemExit("No hay rutas que sondear. Define MERCATELY_QA_TELEFONO o pasa --ruta.")
 
